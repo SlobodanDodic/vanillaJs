@@ -238,7 +238,7 @@ document.getElementById("resultBtn15").addEventListener("click", function () {
   //     largestFirstFn = matrixDiagonal[i][i];
   //   }
   // }
-  // alert("Largest element on the main diagonal: " + largestFirstFn);
+  // console.log("Largest element (FirstFn) on the main diagonal: " + largestFirstFn);
 
   let largest = matrixDiagonal[0][0];
 

@@ -6,15 +6,261 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="../img/logo.png" type="image/png" sizes="16x16">
   <link rel="stylesheet" href="../css/style.css">
-  <title>JS Modul 2.1</title>
+  <title>JS Modul 2.2</title>
 </head>
 
 <body>
 
-  <h1><span>JS</span> Modul <span>T1</span></h1>
+  <h1><span>JS</span> Modul <span>T2</span></h1>
 
   <pre>
     <code>
+<span> 
+<i>Zadatak 1</i>
+
+
+Data su dva niza. U oba niza nalaze se nazivi odredjenih vocaka.
+Potrebno je formirati treci niz koji ce da sadrzi sve elemente prvog i drugog niza.
+</span>
+
+document.getElementById("resultBtn1").addEventListener("click", function () {
+  let vocke1 = ["banana", "kruska", "jabuka"];
+  let vocke2 = ["tresnja", "sljiva", "jagoda"];
+  
+  let vockeSum = [];
+  
+  for (let i = 0; i < vocke1.length; i++) {
+    vockeSum.push(vocke1[i]);
+  }
+  for (let i in vocke2) {
+    vockeSum.push(vocke2[i]);
+  }
+  
+  alert(vockeSum);
+});
+
+<button id="resultBtn1">Click to See Results</button>
+    </code>
+  </pre>
+
+  <pre>
+    <code>
+<span> 
+<i>Zadatak 2</i>
+
+
+Data su dva niza i oba niza nalaze se nazivi odredjenih vocaka.
+Potrebno je formirati treci niz, koji ce imati samo jedinstvene vocke bez duplikata.
+</span>
+
+document.getElementById("resultBtn2").addEventListener("click", function () {
+  let vocke1 = ["banana", "kruska", "jabuka", "sljiva"];
+  let vocke2 = ["tresnja", "sljiva", "jagoda", "kupina", "malina"];
+  
+  let vockeSum = [];
+  
+  for (let i in vocke1) {
+    vockeSum.push(vocke1[i]);
+  }
+  for (let i in vocke2) {
+    if (!vockeSum.includes(vocke2[i])) {
+      vockeSum.push(vocke2[i]);
+    }
+  }
+  alert(vockeSum);
+});
+
+<button id="resultBtn2">Click to See Results</button>
+    </code>
+  </pre>
+
+  <pre>
+    <code>
+<span> 
+<i>Zadatak 3</i>
+
+
+Dat je niz koji sadrzi automobile. Automobili mogu u zavisnosti od vrste motora, da budu na dizel ili benzin.
+Formirati dva niza, jedan koji ce da sadrzi automobile na dizel i drugi na benzin.
+Uociti u zadatom nizu, kako je moguce odrediti da li je auto na dizel ili na benzin.
+</span>
+
+document.getElementById("resultBtn3").addEventListener("click", function () {
+  let cars = [
+    ["mercedes", "b"],
+    ["opel", "d"],
+    ["toyota", "d"],
+    ["bmw", "b"],
+    ["volvo", "d"],
+  ];
+
+  let dizel = [];
+  let benzin = [];
+
+  for (let i in cars) {
+    if (cars[i][1] === "d") {
+      dizel.push(cars[i][0]);
+    } else {
+      benzin.push(cars[i][0]);
+    }
+  }
+
+  alert("dizels: " + dizel + " & " + "benzin: " + benzin);
+});
+
+<button id="resultBtn3">Click to See Results</button>
+    </code>
+  </pre>
+
+  <pre>
+    <code>
+<span> 
+<i>Zadatak 4</i>
+
+
+Za zadate zaposlene ispisati svakog zaposlenog i koliko svaki zaposleni ima godina
+</span>
+
+document.getElementById("resultBtn4").addEventListener("click", function () {
+  let zaposleni = [
+  ["pera", "jova", "marko"],
+  [28, 31, 19],
+  ];
+
+  let employees = [];
+  for (let i = 0; i < zaposleni[0].length; i++) {
+    employees.push(zaposleni[0][i] + " ima godina " + zaposleni[1][i]);
+  }
+  alert(employees);
+});
+
+<button id="resultBtn4">Click to See Results</button>
+    </code>
+  </pre>
+
+  <pre>
+    <code>
+<span> 
+<i>Zadatak 5</i>
+
+
+U spisku zaposlenih naci koliko Jova ima godina:
+</span>
+
+document.getElementById("resultBtn5").addEventListener("click", function () {
+  let employees = [
+    ["pera", "jova", "marko"],
+    [28, 31, 19],
+  ];
+
+  for (let i = 0; i < employees[0].length; i++) {
+    if (employees[0][i] === "jova") {
+      alert("Employee Jova is " + employees[1][i] + " years old.");
+      break;
+    }
+  }
+});
+
+<button id="resultBtn5">Click to See Results</button>
+    </code>
+  </pre>
+
+  <pre>
+    <code>
+<span> 
+<i>Zadatak 6</i>
+
+
+Naci srednju vrednost godina zaposlenih:
+</span>
+
+document.getElementById("resultBtn6").addEventListener("click", function () {
+  let employees = [
+    ["pera", "jova", "marko"],
+    [28, 31, 19],
+  ];
+
+  let ageSum = [];
+  for (let i = 0; i < employees[1].length; i++) {
+    ageSum += arr[i];
+  }
+  alert(ageSum);
+});
+
+<button id="resultBtn6">Click to See Results</button>
+    </code>
+  </pre>
+
+  <pre>
+    <code>
+<span> 
+<i>Zadatak 7</i>
+
+
+Za zadate zaposlene izracunati i podesiti plate ostalih zaposlenih tako da:
+- tehnicar ima 70% plate inzenjera
+- doktor ima platu tehnicara + pola plate inzenjera
+- nakon toga proci kroz spisak zaposlenih i ispisati njihova imena, njihove radne pozicije i njihove plate
+</span>
+
+document.getElementById("resultBtn7").addEventListener("click", function () {
+  let employees = [
+  ["pera", "jova", "marko"],
+  [28, 31, 39],
+  ["inzenjer", "tehnicar", "doktor"],
+  [700, 0, 0],
+  ];
+
+  let plata_inzenjer = 0;
+  let plata_tehnicar = 0;
+  let plata_doktor = 0;
+
+  for (let i = 0; i < employees.length; i++) {
+    for (let j = 0; j < employees[i].length; j++) {
+      if (employees[i][j] == "inzenjer") {
+        plata_inzenjer = employees[i + 1][j];
+        plata_tehnicar = Math.round(plata_inzenjer * 0.7);
+        plata_doktor = Math.round(plata_tehnicar + plata_inzenjer * 0.5);
+      }
+    }
+  }
+
+  for (let i = 0; i < employees.length; i++) {
+    for (let j = 0; j < employees[i].length; j++) {
+      if (employees[i][j] == "tehnicar") {
+        employees[i + 1][j] = plata_tehnicar;
+      }
+      if (employees[i][j] == "doktor") {
+        employees[i + 1][j] = plata_doktor;
+      }
+    }
+  }
+
+  alert(employees);
+});
+
+<button id="resultBtn7">Click to See Results</button>
+    </code>
+  </pre>
+
+  <pre>
+    <code>
+<span> 
+<i>Zadatak 8</i>
+
+
+Za zadatu listu zaposlenih izracunati:
+- godinu rodjenja na osnovu trenutnih godina:
+- godinu rodjenja za svakog zaposlenog i dobijene rezultate smestiti u niz koji je potrebno ubaciti u let zaposleni.
+</span>
+
+document.getElementById("resultBtn8").addEventListener("click", function () {
+  let d = new Date();
+  let godina = d.getFullYear();
+
+});
+
+<button id="resultBtn8">Click to See Results</button>
     </code>
   </pre>
 
