@@ -99,6 +99,7 @@ pre code button {
 
 @media (max-width: 540px) {
   pre code {
+    font-size: 1.15vw;
     padding: 0;
   }
 }
