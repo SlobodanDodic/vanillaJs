@@ -30,23 +30,441 @@ ispisati "Proizvod prve i trece je veci od 15 i druga varijable je negativna",
 ispisati "Proizvod prve i trece je broj veci od 15 ili je druga varijabla pozitivna"
 </span>
 
-  let x = 3;
-  let y = -4;
+document.getElementById("resultBtn1").addEventListener("click", function () {
+  let x = prompt("Enter the number x:");
+  let y = prompt("Enter the number y:");
   let z = x - y;
-  
-  if (x + y > 0) {
-    console.log("Zbir prva dva broja je pozitivan broj");
-  } else if (x - y > 0) {
-    console.log("Razlika prva dva broja je pozitivan broj");
-  }
-  
-  if (x * z > 15 && y < 0) {
-    console.log("Proizvod prve i trece je veci od 15 i druga varijable je negativna");
-  } else if (x * z > 15 || y > 0) {
-    console.log("Proizvod prve i trece je broj veci od 15 ili je druga varijabla pozitivna");
+
+  x = parseInt(x);
+  y = parseInt(y);
+
+  if (isNaN(x) || isNaN(y)) {
+    alert("Invalid input. Please enter a numbers for x and y.");
+    return;
   }
 
+  let resultMessage = "";
+
+  if (x + y > 0) {
+    resultMessage = "Zbir prva dva broja je pozitivan broj";
+  } else if (x - y > 0) {
+    resultMessage = "Razlika prva dva broja je pozitivan broj";
+  }
+
+  if (x * z > 15 && y < 0) {
+    resultMessage += "\nProizvod prve i trece je veci od 15 i druga varijable je negativna";
+  } else if (x * z > 15 || y > 0) {
+    resultMessage += "\nProizvod prve i trece je broj veci od 15 ili je druga varijabla pozitivna";
+  }
+
+  alert(resultMessage);
+});
+
 <button id="resultBtn1">Click to See Results</button>
+    </code>
+  </pre>
+
+  <pre>
+    <code>
+<span> 
+<i>Zadatak 2</i>
+
+
+Napisati switch petlju tako da: 
+- ako je zadata vrednost izmedju 1 i 5 ispisati: "Zadata vrednost je izmedju 1 i 5 i zadata vrednost je (X)".
+- ako je zadata vrednost izmedju 8 i 10 ispisati: "Zadata vrednost je izmedju 8 i 10".
+- u suprotnom ispisati zadata vrednost nije u navedenom opsegu.
+</span>
+
+document.getElementById("resultBtn2").addEventListener("click", function () {
+  let x = prompt("Enter the number x:");
+
+  if (isNaN(x)) {
+    alert("Invalid input. Please enter a numbers for x.");
+    return;
+  }
+
+  x = parseInt(x);
+
+  let resultMessage = "";
+
+  switch (x) {
+    case 1:
+    case 2:
+    case 3:
+    case 4:
+    case 5:
+      resultMessage = "Zadata vrednost je izmedju 1 i 5 i zadata vrednost je " + x;
+      break;
+    case 8:
+    case 9:
+    case 10:
+      resultMessage = "Zadata vrednost je izmedju 8 i 10 i zadata vrednost je " + x;
+      break;
+    default:
+      resultMessage = "Zadata vrednost nije u navedenom opsegu";
+  }
+
+  alert(resultMessage);
+});
+
+<button id="resultBtn2">Click to See Results</button>
+    </code>
+  </pre>
+
+  <pre>
+    <code>
+<span> 
+<i>Zadatak 3</i>
+
+Napisati while petlju tako da se izvrsava sve dok zbir promenljivih x i y ne postane pozitivan broj.
+Napomena: x = -7, y = 1, u while petlji u svakoj iteraciji uvecavati y za 1:
+</span>
+
+document.getElementById("resultBtn3").addEventListener("click", function () {
+  let x = -7;
+  let y = 1;
+  let resultMessage = "";
+
+  while (x + y < 1) {
+    y++;
+    resultMessage = "Vrednost y je " + y;
+  }
+
+  alert(resultMessage);
+});
+
+<button id="resultBtn3">Click to See Results</button>
+    </code>
+  </pre>
+
+  <pre>
+    <code>
+<span> 
+<i>Zadatak 4</i>
+
+Napisati for petlju tako da broji od 1 do 10 i da se ispisuju samo brojevi koji su deljivi sa 2:
+</span>
+
+document.getElementById("resultBtn4").addEventListener("click", function () {
+  let i = 10;
+  let resultMessage = [];
+
+  for (let i = 1; i <= 10; i++) {
+    if (i % 2 === 0) {
+      resultMessage.push(i);
+    }
+  }
+
+  alert(resultMessage);
+});
+
+<button id="resultBtn4">Click to See Results</button>
+    </code>
+  </pre>
+
+  <pre>
+    <code>
+<span> 
+<i>Zadatak 5</i>
+
+Napisati for petlju koja prolazi kroz zadati niz i ispisuje elemente niza:
+</span>
+
+document.getElementById("resultBtn5").addEventListener("click", function () {
+  var array = ["saab", "volvo", "mercedes"];
+
+  for (let i = 0; i < array.length; i++) {
+    alert(i + " " + array[i]);
+  }
+});
+
+<button id="resultBtn5">Click to See Results</button>
+    </code>
+  </pre>
+
+  <pre>
+    <code>
+<span> 
+<i>Zadatak 6</i>
+
+Napisati for petlju koja prolazi kroz zadati niz i ispisuje ga, ali prekida sa izvrsavanjem ukoliko naidje na element "volvo":
+</span>
+
+document.getElementById("resultBtn6").addEventListener("click", function () {
+  var array = ["saab", "volvo", "mercedes"];
+
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] === "volvo") {
+      break;
+    }
+    alert(array[i]);
+  }
+});
+
+<button id="resultBtn6">Click to See Results</button>
+    </code>
+  </pre>
+
+  <pre>
+    <code>
+<span> 
+<i>Zadatak 7</i>
+
+Napisati for petlju koja prolazi kroz zadati niz i ispisuje ga, ali preskace se ispisivanje ukoliko naidje na element "volvo":
+</span>
+
+document.getElementById("resultBtn7").addEventListener("click", function () {
+  let array = ["saab", "volvo", "mercedes"];
+  let resultMessage = [];
+
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] === "volvo") {
+      continue;
+    }
+    resultMessage.push(array[i]);
+  }
+  alert(resultMessage);
+});
+
+<button id="resultBtn7">Click to See Results</button>
+    </code>
+  </pre>
+
+  <pre>
+    <code>
+<span> 
+<i>Zadatak 8</i>
+
+Napisati program koji ispisuje one brojeve između 1 i 20 koji su deljivi sa 3:
+</span>
+
+document.getElementById("resultBtn8").addEventListener("click", function () {
+  let resultMessage = [];
+
+  for (let i = 1; i < 20; i++) {
+    if (i % 3 === 0) {
+      resultMessage.push(i);
+    }
+  }
+  alert(resultMessage);
+});
+
+<button id="resultBtn8">Click to See Results</button>
+    </code>
+  </pre>
+
+  <pre>
+    <code>
+<span> 
+<i>Zadatak 9</i>
+
+Napisati program koji računa srednju vrednost niza celih brojeva:
+</span>
+
+document.getElementById("resultBtn9").addEventListener("click", function () {
+  let arrayOne = [12, 24, 17, 19, 79, 47];
+  let suma = 0;
+
+  for (let i = 0; i < arrayOne.length; i++) {
+    suma += arrayOne[i];
+  }
+  
+  let mid = suma / arrayOne.length;
+  alert(mid);
+});
+
+<button id="resultBtn9">Click to See Results</button>
+    </code>
+  </pre>
+
+  <pre>
+    <code>
+<span> 
+<i>Zadatak 10</i>
+
+Napisati program koji utvrđuje da li se u datom nizu celih brojeva nalazi broj 5:
+</span>
+
+document.getElementById("resultBtn10").addEventListener("click", function () {
+  let containFive = [1, 4, 7, 5, 87, 134];
+  alert(containFive.includes(5));
+});
+
+<button id="resultBtn10">Click to See Results</button>
+    </code>
+  </pre>
+
+  <pre>
+    <code>
+<span> 
+<i>Zadatak 11</i>
+
+Napisati program koji određuje da li je niz simetričan:
+</span>
+
+document.getElementById("resultBtn11").addEventListener("click", function () {
+  let nums = [2, 7, 9, 9, 7, 2];
+  let isSymmetric = true;
+
+  for (let i = 0; i < nums.length / 2; i++) {
+    if (nums[i] !== nums[nums.length - i - 1]) {
+      isSymmetric = false;
+      break;
+    }
+  }
+  if (isSymmetric) {
+    alert("The array is symmetric!");
+  } else {
+    alert("The array is NOT symmetric!");
+  }
+  });
+
+<button id="resultBtn11">Click to See Results</button>
+    </code>
+  </pre>
+
+  <pre>
+    <code>
+<span> 
+<i>Zadatak 12</i>
+
+Napisati program koji za svaki red matrice ispisuje koliko ima nula u tom redu:
+</span>
+
+document.getElementById("resultBtn12").addEventListener("click", function () {
+  let matrix = [
+    [1, 2, 3, 4],
+    [1, 0, 1, 1],
+    [1, 0, 1, 0],
+    [1, 0, 0, 0],
+  ];
+  let result = [];
+
+  for (let i = 0; i < matrix.length; i++) {
+    let zeroCount = 0;
+
+    for (let j = 0; j < matrix[i].length; j++) {
+      if (matrix[i][j] === 0) {
+        zeroCount++;
+      }
+    }
+    result.push(` Row ${i + 1}: ${zeroCount} zeros`);
+  }
+  alert(result);
+});
+
+<button id="resultBtn12">Click to See Results</button>
+    </code>
+  </pre>
+
+  <pre>
+    <code>
+<span> 
+<i>Zadatak 13</i>
+
+Napisati program koji pronalazi najveci element u nizu decimalnih brojeva:
+</span>
+
+document.getElementById("resultBtn13").addEventListener("click", function () {
+  var decimals = [0.01, 0.001, 0.2, 0.002];
+  var biggest = decimals[0];
+
+  for (let i = 1; i < decimals.length; i++) {
+    if (decimals[i] > biggest) {
+      biggest = decimals[i];
+    }
+  }
+  alert("Biggest: " + biggest);
+});
+
+<button id="resultBtn13">Click to See Results</button>
+    </code>
+  </pre>
+
+  <pre>
+    <code>
+<span> 
+<i>Zadatak 14</i>
+
+Napisati program koji pronalazi najmanji element u nizu decimalnih brojeva:
+</span>
+
+document.getElementById("resultBtn14").addEventListener("click", function () {
+  var decimals = [0.01, 0.001, 0.2, 0.0002];
+  var smallest = decimals[0];
+  
+  for (let i = 1; i < decimals.length; i++) {
+    if (decimals[i] < smallest) {
+      smallest = decimals[i];
+    }
+  }
+  alert("Smallest: " + smallest);
+});
+
+<button id="resultBtn14">Click to See Results</button>
+    </code>
+  </pre>
+
+  <pre>
+    <code>
+<span> 
+<i>Zadatak 15</i>
+
+Napisati program koji pronalazi najveci element na glavnoj dijagonali matrice:
+</span>
+
+document.getElementById("resultBtn15").addEventListener("click", function () {
+  let matrixDiagonal = [
+    [7, 1, 4, 7],
+    [1, 4, 7, 6],
+    [9, 7, 8, 9],
+    [9, 7, 9, 5],
+  ];
+
+  let largest = matrixDiagonal[0][0];
+
+  for (let i = 0; i < matrixDiagonal.length; i++) {
+    for (let j = 0; j < matrixDiagonal[i].length; j++) {
+      if (i === j && matrixDiagonal[i][j] > largest) {
+        largest = matrixDiagonal[i][j];
+      }
+    }
+  }
+  alert("Largest element on the main diagonal: " + largest);
+});
+
+<button id="resultBtn15">Click to See Results</button>
+    </code>
+  </pre>
+
+  <pre>
+    <code>
+<span> 
+<i>Zadatak 16</i>
+
+Napisati program koji za proizvoljne n i m kreira i popunjava matricu čiji su elementi jednaki poziciji kolone:
+</span>
+
+document.getElementById("resultBtn16").addEventListener("click", function () {
+  let n = 3;
+  let m = 3;
+
+  let matrix = [];
+
+  for (let i = 1; i <= n; i++) {
+    let row = [];
+
+    for (let j = 1; j <= m; j++) {
+      row.push(j);
+    }
+
+    matrix.push(row);
+  }
+  alert(matrix);
+});
+
+<button id="resultBtn16">Click to See Results</button>
     </code>
   </pre>
 

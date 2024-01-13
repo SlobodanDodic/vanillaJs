@@ -69,10 +69,11 @@ pre {
   border: 1px solid #3d3d3d;
 }
 pre code {
-  max-width: 80vw;
+  width: 80vw;
   display: flex;
   flex-direction: column;
   font-size: 1.15vw;
+  padding: 0 1rem;
 }
 pre code span {
   font-family: "Philosopher", sans-serif !important;
@@ -93,6 +94,13 @@ pre code button {
   box-shadow: 8px 10px 8px -8px rgba(0, 0, 0, 0.6392156863);
   border: 1px solid #3d3d3d;
   border-radius: 10px;
+  margin-top: 1rem;
+}
+
+@media (max-width: 540px) {
+  pre code {
+    padding: 0;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

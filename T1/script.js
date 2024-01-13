@@ -1,8 +1,16 @@
 // Zadatak 1:
 document.getElementById("resultBtn1").addEventListener("click", function () {
-  let x = 3;
-  let y = -4;
+  let x = prompt("Enter the number x:");
+  let y = prompt("Enter the number y:");
   let z = x - y;
+
+  x = parseInt(x);
+  y = parseInt(y);
+
+  if (isNaN(x) || isNaN(y)) {
+    alert("Invalid input. Please enter a numbers for x and y.");
+    return;
+  }
 
   let resultMessage = "";
 
@@ -22,176 +30,252 @@ document.getElementById("resultBtn1").addEventListener("click", function () {
 });
 
 // Zadatak 2:
-// Napisati switch petlju tako da ako je zadata vrednost izmedju 1 i 5 ispisati: "Zadata vrednost je izmedju 1 i 5 i zadata vrednost je (X)"
-// Ukoliko je zadata vrednost izmedju 8 i 10 ispisati: "Zadata vrednost je izmedju 8 i 10"
-// U suprotnom ispisati zadata vrednost nije u navedenom opsegu
-x = 7;
+document.getElementById("resultBtn2").addEventListener("click", function () {
+  let x = prompt("Enter the number x:");
 
-switch (x) {
-  case 1:
-  case 2:
-  case 3:
-  case 4:
-  case 5:
-    console.log("Zadata vrednost je izmedju 1 i 5 i zadata vrednost je " + x);
-    break;
-  case 8:
-  case 9:
-  case 10:
-    console.log("Zadata vrednost je izmedju 8 i 10 i zadata vrednost je " + x);
-    break;
-  default:
-    console.log("Zadata vrednost nije u navedenom opsegu");
-}
-
-// Zadatak 3 (Napisati while petlju tako da se izvrsava sve dok zbir promenljivih x i y ne postane pozitivan broj.
-// Napomena: x = -7, y = 1, u while petlji u svakoj iteraciji uvecavati y za 1):
-let o = -5;
-let p = 1;
-
-while (o + p < 1) {
-  p++;
-  console.log("Vrednost p je " + p);
-}
-
-// Zadatak 4 (Napisati for petlju tako da broji od 1 do 10 i da se ispisuju samo brojevi koji su deljivi sa 2):
-let i = 10;
-for (let i = 1; i <= 10; i++) {
-  if (i % 2 === 0) {
-    console.log(i);
+  if (isNaN(x)) {
+    alert("Invalid input. Please enter a numbers for x.");
+    return;
   }
-}
 
-// Zadatak 5 (Napisati for petlju koja prolazi kroz zadati niz i ispisuje elemente niza):
-var array = ["saab", "volvo", "mercedes"];
+  x = parseInt(x);
 
-for (let i = 0; i < array.length; i++) {
-  console.log(array[i]);
-}
+  let resultMessage = "";
 
-// Zadatak 6 (Napisati for petlju koja prolazi kroz zadati niz i ispisuje ga, ali prekida sa izvrsavanjem ukoliko naidje na element "volvo"):
-var array = ["saab", "volvo", "mercedes"];
-
-for (let i = 0; i < array.length; i++) {
-  if (array[i] === "volvo") {
-    break;
+  switch (x) {
+    case 1:
+    case 2:
+    case 3:
+    case 4:
+    case 5:
+      resultMessage = "Zadata vrednost je izmedju 1 i 5 i zadata vrednost je " + x;
+      break;
+    case 8:
+    case 9:
+    case 10:
+      resultMessage = "Zadata vrednost je izmedju 8 i 10 i zadata vrednost je " + x;
+      break;
+    default:
+      resultMessage = "Zadata vrednost nije u navedenom opsegu";
   }
-  console.log(array[i]);
-}
 
-// Zadatak 7 (Napisati for petlju koja prolazi kroz zadati niz i ispisuje ga, ali preskace se ispisivanje ukoliko naidje na element "volvo"):
-var array = ["saab", "volvo", "mercedes"];
+  alert(resultMessage);
+});
 
-for (let i = 0; i < array.length; i++) {
-  if (array[i] === "volvo") {
-    continue;
+// Zadatak 3:
+document.getElementById("resultBtn3").addEventListener("click", function () {
+  let x = -7;
+  let y = 1;
+  let resultMessage = "";
+
+  while (x + y < 1) {
+    y++;
+    resultMessage = "Vrednost y je " + y;
   }
-  console.log(array[i]);
-}
 
-// Zadatak 8 (Napisati program koji ispisuje one brojeve između 1 i 20 koji su deljivi sa 3):
-for (let i = 1; i < 20; i++) {
-  if (i % 3 === 0) {
-    console.log(i);
-  }
-}
+  alert(resultMessage);
+});
 
-// Zadatak 9 (Napisati program koji računa srednju vrednost niza celih brojeva):
-let arrayOne = [2, 2, 2, 2, 2, 2];
-let suma = 0;
-for (let i = 0; i < arrayOne.length; i++) {
-  suma += arrayOne[i];
-}
+// Zadatak 4:
+document.getElementById("resultBtn4").addEventListener("click", function () {
+  let i = 10;
+  let resultMessage = [];
 
-let mid = suma / arrayOne.length;
-console.log(mid);
-
-// Zadatak 10 (Napisati program koji utvrđuje da li se u datom nizu celih brojeva nalazi broj 5):
-let containFive = [1, 4, 7, 5, 87, 134];
-console.log(containFive.includes(5));
-
-// Zadatak 11 (Napisati program koji određuje da li je niz simetričan):
-let nums = [2, 7, 9, 9, 7, 2];
-let isSymmetric = true;
-
-for (let i = 0; i < nums.length / 2; i++) {
-  if (nums[i] !== nums[nums.length - i - 1]) {
-    isSymmetric = false;
-    break;
-  }
-}
-if (isSymmetric) {
-  console.log("The array is symmetric!");
-} else {
-  console.log("The array is NOT symmetric!");
-}
-
-// Zadatak 12 (Napisati program koji za svaki red matrice ispisuje koliko ima nula u tom redu):
-let matrix = [
-  [1, 2, 3, 4],
-  [1, 0, 1, 1],
-  [1, 0, 1, 0],
-  [1, 0, 0, 0],
-];
-
-for (let i = 0; i < matrix.length; i++) {
-  let zeroCount = 0;
-
-  for (let j = 0; j < matrix[i].length; j++) {
-    if (matrix[i][j] === 0) {
-      zeroCount++;
+  for (let i = 1; i <= 10; i++) {
+    if (i % 2 === 0) {
+      resultMessage.push(i);
     }
   }
-  console.log(`Row ${i + 1}: ${zeroCount} zero(s)`);
-}
 
-// Zadatak 13 (Napisati program koji pronalazi najveci element u nizu decimalnih brojeva):
-var decimals = [0.01, 0.001, 0.2, 0.002];
-var biggest = decimals[0];
+  alert(resultMessage);
+});
 
-for (let i = 1; i < decimals.length; i++) {
-  if (decimals[i] > biggest) {
-    biggest = decimals[i];
+// Zadatak 5:
+document.getElementById("resultBtn5").addEventListener("click", function () {
+  let array = ["saab", "volvo", "mercedes"];
+
+  for (let i = 0; i < array.length; i++) {
+    alert(i + " " + array[i]);
   }
-}
-console.log("Biggest: " + biggest);
+});
 
-// Zadatak 14 (Napisati program koji pronalazi najmanji element u nizu decimalnih brojeva):
-var decimals = [0.01, 0.001, 0.2, 0.0002];
-var smallest = decimals[0];
+// Zadatak 6:
+document.getElementById("resultBtn6").addEventListener("click", function () {
+  let array = ["saab", "volvo", "mercedes"];
 
-for (let i = 1; i < decimals.length; i++) {
-  if (decimals[i] < smallest) {
-    smallest = decimals[i];
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] === "volvo") {
+      break;
+    }
+    alert(array[i]);
   }
-}
-console.log("Smallest: " + smallest);
+});
 
-// Zadatak 15 (Napisati program koji pronalazi najveci element na glavnoj dijagonali matrice):
-let matrixDiagonal = [
-  [7, 1, 4, 7],
-  [1, 4, 7, 6],
-  [9, 7, 9, 9],
-  [9, 7, 9, 5],
-];
-let largest = matrixDiagonal[0][0];
+// Zadatak 7:
+document.getElementById("resultBtn7").addEventListener("click", function () {
+  let array = ["saab", "volvo", "mercedes"];
+  let resultMessage = [];
 
-for (let i = 0; i < matrixDiagonal.length; i++) {
-  if (matrixDiagonal[i][i] > largest) {
-    largest = matrixDiagonal[i][i];
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] === "volvo") {
+      continue;
+    }
+    resultMessage.push(array[i]);
   }
-}
-console.log("Largest element on the main diagonal:", largest);
+  alert(resultMessage);
+});
 
-let largestSecondFn = matrixDiagonal[0][0];
+// Zadatak 8:
+document.getElementById("resultBtn8").addEventListener("click", function () {
+  let resultMessage = [];
 
-for (let i = 0; i < matrixDiagonal.length; i++) {
-  for (let j = 0; j < matrixDiagonal[i].length; j++) {
-    if (i === j && matrixDiagonal[i][j] > largestSecondFn) {
-      largestSecondFn = matrixDiagonal[i][j];
+  for (let i = 1; i < 20; i++) {
+    if (i % 3 === 0) {
+      resultMessage.push(i);
     }
   }
-}
-console.log("LargestSecondFn element on the main diagonal:", largestSecondFn);
+  alert(resultMessage);
+});
 
-// Zadatak 16 (Napisati program koji za proizvoljne n i m kreira i popunjava matricu čiji su elementi jednaki poziciji kolone):
+// Zadatak 9:
+document.getElementById("resultBtn9").addEventListener("click", function () {
+  let arrayOne = [12, 24, 17, 19, 79, 47];
+  let suma = 0;
+
+  for (let i = 0; i < arrayOne.length; i++) {
+    suma += arrayOne[i];
+  }
+
+  let mid = suma / arrayOne.length;
+  alert(mid);
+});
+
+// Zadatak 10:
+document.getElementById("resultBtn10").addEventListener("click", function () {
+  let containFive = [1, 4, 7, 5, 87, 134];
+  alert(containFive.includes(5));
+});
+
+// Zadatak 11:
+document.getElementById("resultBtn11").addEventListener("click", function () {
+  let nums = [2, 7, 9, 9, 7, 2];
+  let isSymmetric = true;
+
+  for (let i = 0; i < nums.length / 2; i++) {
+    if (nums[i] !== nums[nums.length - i - 1]) {
+      isSymmetric = false;
+      break;
+    }
+  }
+  if (isSymmetric) {
+    alert("The array is symmetric!");
+  } else {
+    alert("The array is NOT symmetric!");
+  }
+});
+
+// Zadatak 12:
+document.getElementById("resultBtn12").addEventListener("click", function () {
+  let matrix = [
+    [1, 2, 3, 4],
+    [1, 0, 1, 1],
+    [1, 0, 1, 0],
+    [1, 0, 0, 0],
+  ];
+  let result = [];
+
+  for (let i = 0; i < matrix.length; i++) {
+    let zeroCount = 0;
+
+    for (let j = 0; j < matrix[i].length; j++) {
+      if (matrix[i][j] === 0) {
+        zeroCount++;
+      }
+    }
+    result.push(` Row ${i + 1}: ${zeroCount} zeros`);
+  }
+  alert(result);
+});
+
+// Zadatak 13:
+document.getElementById("resultBtn13").addEventListener("click", function () {
+  var decimals = [0.01, 0.001, 0.2, 0.002];
+  var biggest = decimals[0];
+
+  for (let i = 1; i < decimals.length; i++) {
+    if (decimals[i] > biggest) {
+      biggest = decimals[i];
+    }
+  }
+  alert("Biggest: " + biggest);
+});
+
+// Zadatak 14:
+document.getElementById("resultBtn14").addEventListener("click", function () {
+  var decimals = [0.01, 0.001, 0.2, 0.0002];
+  var smallest = decimals[0];
+
+  for (let i = 1; i < decimals.length; i++) {
+    if (decimals[i] < smallest) {
+      smallest = decimals[i];
+    }
+  }
+  alert("Smallest: " + smallest);
+});
+
+// Zadatak 15:
+document.getElementById("resultBtn15").addEventListener("click", function () {
+  let matrixDiagonal = [
+    [7, 1, 4, 7],
+    [1, 4, 7, 6],
+    [9, 7, 8, 9],
+    [9, 7, 9, 5],
+  ];
+
+  // let largestFirstFn = matrixDiagonal[0][0];
+  // for (let i = 0; i < matrixDiagonal.length; i++) {
+  //   if (matrixDiagonal[i][i] > largestFirstFn) {
+  //     largestFirstFn = matrixDiagonal[i][i];
+  //   }
+  // }
+  // alert("Largest element on the main diagonal: " + largestFirstFn);
+
+  let largest = matrixDiagonal[0][0];
+
+  for (let i = 0; i < matrixDiagonal.length; i++) {
+    for (let j = 0; j < matrixDiagonal[i].length; j++) {
+      if (i === j && matrixDiagonal[i][j] > largest) {
+        largest = matrixDiagonal[i][j];
+      }
+    }
+  }
+  alert("Largest element on the main diagonal: " + largest);
+});
+
+// Zadatak 16:
+document.getElementById("resultBtn16").addEventListener("click", function () {
+  let n = prompt("Enter the number of rows (n):");
+  let m = prompt("Enter the number of columns (m):");
+
+  // Convert input to numbers
+  n = parseInt(n);
+  m = parseInt(m);
+
+  if (isNaN(n) || isNaN(m) || n <= 0 || m <= 0) {
+    alert("Invalid input. Please enter positive numbers for n and m.");
+    return;
+  }
+
+  let matrix = [];
+
+  for (let i = 1; i <= n; i++) {
+    let row = [];
+
+    for (let j = 1; j <= m; j++) {
+      row.push(j);
+    }
+
+    matrix.push(row);
+  }
+  alert("Generated matrix:\n" + JSON.stringify(matrix));
+});
