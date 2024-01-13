@@ -1,0 +1,66 @@
+@import "vars";
+
+// Media queries:
+@mixin media-query($break-point) {
+  @if $break-point == sm {
+    @media (max-width: $small) {
+      @content;
+    }
+  }
+  @if $break-point == md {
+    @media screen and (max-width: 1280px) and (min-width: calc($small + 1px)) {
+      @content;
+    }
+  }
+  @if $break-point == lg {
+    @media (min-width: calc($medium + 1px)) {
+      @content;
+    }
+  }
+}
+
+// Positions:
+@mixin position-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+@mixin position-x-center($position: absolute) {
+  position: $position;
+  left: 50%;
+  transform: translateX(-50%);
+  @content;
+}
+@mixin position-y-center($position: absolute, $left: 0rem) {
+  position: $position;
+  left: $left;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+// Flex:
+@mixin flexy-row($content: center, $items: center) {
+  display: flex;
+  justify-content: $content;
+  align-items: $items;
+}
+@mixin flexy-col($content: center, $items: center) {
+  display: flex;
+  flex-direction: column;
+  justify-content: $content;
+  align-items: $items;
+}
+
+// Bg Image:
+@mixin bg-image($url) {
+  background-image: url($url);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@mixin bg-color-st($color, $percent) {
+  background-color: rgba($color, $percent);
+}
+// usage: @include bg-color-st($orange-color, 0.85);

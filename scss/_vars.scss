@@ -1,0 +1,32 @@
+@import url("https://fonts.googleapis.com/css2?family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu+Mono:wght@400;700&display=swap");
+
+// Breakpoints for media queries:
+$small: 540px;
+$medium: 1280px;
+
+// Max width:
+$max-width: 1400px;
+
+// Font Families:
+$primary-ff: "Philosopher", sans-serif;
+$mono-ff: "Ubuntu Mono", monospace;
+
+// Typography:
+$h1-fs: 3rem;
+$h2-fs: 2.5rem;
+$h3-fs: 2rem;
+$h4-fs: 1.5rem;
+$p-fs: 1rem;
+$link-fs: 1rem;
+$input-fs: 1rem;
+
+// Colors:
+$text-code: #eaeaea;
+$text-yellow: #e9e910;
+$text-red: #a00000;
+
+$bg: #444;
+$pre-bg: #333;
+
+$shadow: #ffffff2b;
+$box-shadow: #000000a3;

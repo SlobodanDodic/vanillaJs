@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../img/logo.png" type="image/png" sizes="16x16">
+  <link rel="stylesheet" href="../css/style.css">
+  <title>JS Modul 2.1</title>
+</head>
+
+<body>
+
+  <h1><span>JS</span> Modul <span>T1</span></h1>
+
+  <pre>
+    <code>
+<span> 
+<i>Zadatak 1</i>
+
+
+1. Napisati if petlju tako da :
+- ako je zbir prve dve promenljive pozitivan broj ispisati "Zbir prve dve je pozitivan broj ",
+- u suprotnom ako je razlika prve dve promenljive pozitivan broj ispisati "Razlika prve dve je pozitivan broj".
+
+2. Napisati if petlju tako da :
+- ako je proizvod prve i trece varijable broj veci od 15 i ako je druga varijabla negativna 
+ispisati "Proizvod prve i trece je veci od 15 i druga varijable je negativna", 
+- u suprotnom ako je proizvod prve i trece varijable broj veci od 15 ili ako je druga varijabla pozitivna 
+ispisati "Proizvod prve i trece je broj veci od 15 ili je druga varijabla pozitivna"
+</span>
+
+  let x = 3;
+  let y = -4;
+  let z = x - y;
+  
+  if (x + y > 0) {
+    console.log("Zbir prva dva broja je pozitivan broj");
+  } else if (x - y > 0) {
+    console.log("Razlika prva dva broja je pozitivan broj");
+  }
+  
+  if (x * z > 15 && y < 0) {
+    console.log("Proizvod prve i trece je veci od 15 i druga varijable je negativna");
+  } else if (x * z > 15 || y > 0) {
+    console.log("Proizvod prve i trece je broj veci od 15 ili je druga varijabla pozitivna");
+  }
+
+<button id="resultBtn1">Click to See Results</button>
+    </code>
+  </pre>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
