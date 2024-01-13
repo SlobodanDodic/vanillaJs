@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu+Mono:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cutive+Mono&family=Fira+Sans:wght@400;600;800&display=swap");
 
 // Breakpoints for media queries:
 $small: 540px;
@@ -8,8 +8,8 @@ $medium: 1280px;
 $max-width: 1400px;
 
 // Font Families:
-$primary-ff: "Philosopher", sans-serif;
-$mono-ff: "Ubuntu Mono", monospace;
+$primary-ff: "Fira Sans", sans-serif;
+$mono-ff: "Cutive Mono", monospace;
 
 // Typography:
 $h1-fs: 3rem;
@@ -22,6 +22,7 @@ $input-fs: 1rem;
 
 // Colors:
 $text-code: #eaeaea;
+$text-span: #d8d835;
 $text-yellow: #e9e910;
 $text-red: #a00000;
 

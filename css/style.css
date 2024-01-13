@@ -1,5 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu+Mono:wght@400;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&family=Ubuntu+Mono:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cutive+Mono&family=Fira+Sans:wght@400;600;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cutive+Mono&family=Fira+Sans:wght@400;600;800&display=swap");
 ::-webkit-scrollbar {
   display: none;
   -ms-overflow-style: none; /* IE and Edge */
@@ -13,9 +13,9 @@
 }
 
 body {
-  font-family: "Philosopher", sans-serif;
+  font-family: "Fira Sans", sans-serif;
   color: #eaeaea;
-  background-color: #444;
+  background: linear-gradient(to right, #444, #333);
   padding: 4rem;
   display: flex;
   flex-direction: column;
@@ -24,7 +24,7 @@ body {
 }
 
 h1 {
-  font-size: 7vh;
+  font-size: 6vh;
   margin-bottom: 3rem;
 }
 h1 span {
@@ -72,21 +72,22 @@ pre code {
   width: 80vw;
   display: flex;
   flex-direction: column;
-  font-size: 1vw;
+  font-size: 1.25vw;
   padding: 0 1rem;
 }
 pre code span {
-  font-family: "Philosopher", sans-serif !important;
+  font-family: "Fira Sans", sans-serif !important;
+  color: #d8d835;
   letter-spacing: 1px;
 }
 pre code i {
-  font-size: 1.25vw;
+  font-size: 1.5vw;
   color: #e9e910;
   border-bottom: 1px solid;
   width: fit-content;
 }
 pre code button {
-  font-size: 1.25vw;
+  font-size: 1.5vw;
   color: #e9e910;
   background-color: #333;
   padding: 10px 0;
