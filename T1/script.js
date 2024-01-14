@@ -232,23 +232,20 @@ document.getElementById("resultBtn15").addEventListener("click", function () {
     [9, 7, 9, 5],
   ];
 
-  // let largestFirstFn = matrixDiagonal[0][0];
-  // for (let i = 0; i < matrixDiagonal.length; i++) {
-  //   if (matrixDiagonal[i][i] > largestFirstFn) {
-  //     largestFirstFn = matrixDiagonal[i][i];
-  //   }
-  // }
-  // console.log("Largest element (FirstFn) on the main diagonal: " + largestFirstFn);
-
   let largest = matrixDiagonal[0][0];
-
   for (let i = 0; i < matrixDiagonal.length; i++) {
-    for (let j = 0; j < matrixDiagonal[i].length; j++) {
-      if (i === j && matrixDiagonal[i][j] > largest) {
-        largest = matrixDiagonal[i][j];
-      }
+    if (matrixDiagonal[i][i] > largest) {
+      largest = matrixDiagonal[i][i];
     }
   }
+
+  // for (let i = 0; i < matrixDiagonal.length; i++) {
+  //   for (let j = 0; j < matrixDiagonal[i].length; j++) {
+  //     if (i === j && matrixDiagonal[i][j] > largest) {
+  //       largest = matrixDiagonal[i][j];
+  //     }
+  //   }
+  // }
   alert("Largest element on the main diagonal: " + largest);
 });
 

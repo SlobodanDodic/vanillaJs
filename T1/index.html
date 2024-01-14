@@ -11,7 +11,11 @@
 
 <body>
 
-  <h1><span>JS</span> Modul <span>T1</span></h1>
+  <h1>
+    <span>JS</span>
+    <span style="color: black; text-shadow: 3px 2px 3px #737373;">＜Modul/＞</span>
+    <span>T1</span>
+  </h1>
 
   <pre>
     <code>
@@ -20,14 +24,18 @@
 
 
 1. Napisati if petlju tako da :
-- ako je zbir prve dve promenljive pozitivan broj ispisati "Zbir prve dve je pozitivan broj ",
-- u suprotnom ako je razlika prve dve promenljive pozitivan broj ispisati "Razlika prve dve je pozitivan broj".
+- ako je zbir prve dve promenljive pozitivan broj ispisati: 
+  "Zbir prve dve je pozitivan broj",
+- u suprotnom ako je razlika prve dve promenljive pozitivan broj ispisati: 
+  "Razlika prve dve je pozitivan broj".
 
 2. Napisati if petlju tako da :
-- ako je proizvod prve i trece varijable broj veci od 15 i ako je druga varijabla negativna 
-ispisati "Proizvod prve i trece je veci od 15 i druga varijable je negativna", 
-- u suprotnom ako je proizvod prve i trece varijable broj veci od 15 ili ako je druga varijabla pozitivna 
-ispisati "Proizvod prve i trece je broj veci od 15 ili je druga varijabla pozitivna"
+- ako je proizvod prve i trece varijable broj veci od 15 i 
+  ako je druga varijabla negativna ispisati: 
+  "Proizvod prve i trece je veci od 15 i druga varijable je negativna", 
+- u suprotnom ako je proizvod prve i trece varijable broj veci od 15 
+  ili ako je druga varijabla pozitivna ispisati: 
+  "Proizvod prve i trece je broj veci od 15 ili je druga varijabla pozitivna"
 </span>
 
 document.getElementById("resultBtn1").addEventListener("click", function () {
@@ -71,8 +79,10 @@ document.getElementById("resultBtn1").addEventListener("click", function () {
 
 
 Napisati switch petlju tako da: 
-- ako je zadata vrednost izmedju 1 i 5 ispisati: "Zadata vrednost je izmedju 1 i 5 i zadata vrednost je (X)".
-- ako je zadata vrednost izmedju 8 i 10 ispisati: "Zadata vrednost je izmedju 8 i 10".
+- ako je zadata vrednost izmedju 1 i 5 ispisati: 
+  "Zadata vrednost je izmedju 1 i 5 i zadata vrednost je (X)".
+- ako je zadata vrednost izmedju 8 i 10 ispisati: 
+  "Zadata vrednost je izmedju 8 i 10".
 - u suprotnom ispisati zadata vrednost nije u navedenom opsegu.
 </span>
 
@@ -117,7 +127,9 @@ document.getElementById("resultBtn2").addEventListener("click", function () {
 <span> 
 <i>Zadatak 3</i>
 
-Napisati while petlju tako da se izvrsava sve dok zbir promenljivih x i y ne postane pozitivan broj.
+Napisati while petlju tako da se izvrsava sve dok 
+zbir promenljivih x i y ne postane pozitivan broj.
+
 Napomena: x = -7, y = 1, u while petlji u svakoj iteraciji uvecavati y za 1:
 </span>
 
@@ -143,7 +155,7 @@ document.getElementById("resultBtn3").addEventListener("click", function () {
 <span> 
 <i>Zadatak 4</i>
 
-Napisati for petlju tako da broji od 1 do 10 i da se ispisuju samo brojevi koji su deljivi sa 2:
+Napisati for petlju tako da broji od 1 do 10 i da se ispisuju samo br koji su deljivi sa 2:
 </span>
 
 document.getElementById("resultBtn4").addEventListener("click", function () {
@@ -188,7 +200,8 @@ document.getElementById("resultBtn5").addEventListener("click", function () {
 <span> 
 <i>Zadatak 6</i>
 
-Napisati for petlju koja prolazi kroz zadati niz i ispisuje ga, ali prekida sa izvrsavanjem ukoliko naidje na element "volvo":
+Napisati for petlju koja prolazi kroz zadati niz i ispisuje ga, 
+ali prekida sa izvrsavanjem ukoliko naidje na element "volvo":
 </span>
 
 document.getElementById("resultBtn6").addEventListener("click", function () {
@@ -211,7 +224,8 @@ document.getElementById("resultBtn6").addEventListener("click", function () {
 <span> 
 <i>Zadatak 7</i>
 
-Napisati for petlju koja prolazi kroz zadati niz i ispisuje ga, ali preskace se ispisivanje ukoliko naidje na element "volvo":
+Napisati for petlju koja prolazi kroz zadati niz i ispisuje ga, 
+ali preskace se ispisivanje ukoliko naidje na element "volvo":
 </span>
 
 document.getElementById("resultBtn7").addEventListener("click", function () {
@@ -423,14 +437,13 @@ document.getElementById("resultBtn15").addEventListener("click", function () {
   ];
 
   let largest = matrixDiagonal[0][0];
-
+  
   for (let i = 0; i < matrixDiagonal.length; i++) {
-    for (let j = 0; j < matrixDiagonal[i].length; j++) {
-      if (i === j && matrixDiagonal[i][j] > largest) {
-        largest = matrixDiagonal[i][j];
-      }
+    if (matrixDiagonal[i][i] > largest) {
+      largest = matrixDiagonal[i][i];
     }
   }
+
   alert("Largest element on the main diagonal: " + largest);
 });
 
@@ -443,7 +456,8 @@ document.getElementById("resultBtn15").addEventListener("click", function () {
 <span> 
 <i>Zadatak 16</i>
 
-Napisati program koji za proizvoljne n i m kreira i popunjava matricu čiji su elementi jednaki poziciji kolone:
+Napisati program koji za proizvoljne n i m kreira i 
+popunjava matricu čiji su elementi jednaki poziciji kolone:
 </span>
 
 document.getElementById("resultBtn16").addEventListener("click", function () {

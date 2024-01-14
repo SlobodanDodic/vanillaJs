@@ -141,6 +141,165 @@ document.getElementById("resultBtn7").addEventListener("click", function () {
 
 // Zadatak 8:
 document.getElementById("resultBtn8").addEventListener("click", function () {
-  let d = new Date();
-  let godina = d.getFullYear();
+  let employees = [
+    ["pera", "jova", "marko"],
+    [28, 31, 39],
+  ];
+
+  let zaposleni = [];
+
+  for (let i = 0; i < employees[0].length; i++) {
+    let ime = employees[0][i];
+    let godinaRodjenja = new Date().getFullYear() - employees[1][i];
+    zaposleni.push({ ime, godinaRodjenja });
+  }
+
+  console.log(zaposleni);
+});
+
+// Zadatak 9:
+document.getElementById("resultBtn9").addEventListener("click", function () {
+  let a = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9],
+  ];
+
+  let sumMain = 0;
+  let sumAnti = 0;
+
+  for (let i = 0; i < a.length; i++) {
+    sumMain += a[i][i];
+    sumAnti += a[i][a.length - 1 - i];
+  }
+
+  alert(`Sum of main and anti diagonal: ${sumMain + sumAnti}`);
+});
+// Zadatak 10:
+document.getElementById("resultBtn10").addEventListener("click", function () {
+  let a = [
+    [1, 2, 3, 5],
+    [4, 5, 6, 8],
+    [7, 8, 9, 9],
+    [8, 5, 3, 1],
+  ];
+
+  let sumCol = 0;
+  let sumRow = 0;
+
+  for (let i = 0; i < a.length; i++) {
+    sumCol += a[i][1];
+  }
+  for (let i = 0; i < a[2].length; i++) {
+    sumRow += a[2][i];
+  }
+  alert(`Sum of main and anti diagonal: ${sumCol + sumRow}`);
+});
+
+// Zadatak 11:
+document.getElementById("resultBtn11").addEventListener("click", function () {
+  let a = [
+    [1, 2, 3, 5],
+    [4, 5, 6, 8],
+    [7, 8, 9, 9],
+    [8, 5, 3, 1],
+  ];
+
+  let sum = 0;
+
+  for (let i = 0; i < a.length; i++) {
+    for (let j = 0; j < a[i].length; j++) {
+      if (a[i][j] % 2 == 0) {
+        sum += a[i][j];
+      }
+    }
+  }
+
+  alert(`Sum of elements divisible by 2: ${sum}`);
+});
+
+// Zadatak 12:
+document.getElementById("resultBtn12").addEventListener("click", function () {
+  let a = [
+    [1, 2, 3, 5],
+    [3, 5, 6, 8],
+    [7, 8, 9, 3],
+    [8, 5, 3, 1],
+  ];
+
+  for (let i = 0; i < a.length; i++) {
+    for (let j = 0; j < a[i].length; j++) {
+      if (a[i][j] === 3) {
+        a[i][j] = 0;
+        console.log(a[i][j]);
+      } else if (a[i][j] === 5) {
+        a[i][j] = -1;
+      }
+    }
+  }
+
+  let formattedString = a.map((row) => row.join(" ")).join("\n");
+  alert(formattedString);
+
+  console.log(a);
+});
+
+// Zadatak 13:
+// Short version that calculates only Fahrenheit to Celsius:
+// document.getElementById("resultBtn13").addEventListener("click", function () {
+//   let fahrenheit = prompt("Enter the temperature in ℉:");
+//   fahrenheit = parseFloat(fahrenheit);
+
+//   if (!isNaN(fahrenheit)) {
+//     alert(fahrenheitToCelsius(fahrenheit));
+//   } else {
+//     alert("Invalid input. Please enter a valid number for temperature.");
+//   }
+
+//   function fahrenheitToCelsius(fahrenheit) {
+//     let temperature = ((fahrenheit - 32) * 5) / 9;
+//     return `${fahrenheit.toFixed(2)}℉ = ${temperature.toFixed(2)}℃`;
+//   }
+// });
+// Long version that calculates both options depending on user's choice:
+document.getElementById("resultBtn13").addEventListener("click", function () {
+  let conversionType = prompt("Choose conversion type:\n1. Fahrenheit to Celsius\n2. Celsius to Fahrenheit");
+
+  if (conversionType === "1" || conversionType === "2") {
+    let temperatureInput = prompt("Enter the temperature:");
+    let temperature = parseFloat(temperatureInput);
+
+    if (!isNaN(temperature)) {
+      if (conversionType === "1") {
+        alert(fahrenheitToCelsius(temperature));
+      } else {
+        alert(celsiusToFahrenheit(temperature));
+      }
+    } else {
+      alert("Invalid input. Please enter a valid number for temperature.");
+    }
+  } else {
+    alert("Invalid conversion type. Please choose 1 or 2.");
+  }
+
+  function fahrenheitToCelsius(fahrenheit) {
+    let celsius = ((fahrenheit - 32) * 5) / 9;
+    return `${fahrenheit.toFixed(2)}℉ = ${celsius.toFixed(2)}℃`;
+  }
+
+  function celsiusToFahrenheit(celsius) {
+    let fahrenheit = (celsius * 9) / 5 + 32;
+    return `${celsius.toFixed(2)}℃ = ${fahrenheit.toFixed(2)}℉`;
+  }
+});
+
+// Zadatak 14:
+document.getElementById("resultBtn14").addEventListener("click", function () {
+  let temp = [];
+  for (let i = 0; i <= 100; i++) {
+    if (i % 10 === 0) {
+      temp += `● ${i}℃ is ${(i * 9) / 5 + 32}℉ \n`;
+    }
+  }
+  alert(temp);
 });
