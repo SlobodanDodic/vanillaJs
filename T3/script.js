@@ -285,9 +285,9 @@ document.getElementById("resultBtn13").addEventListener("click", function () {
     let resultContainer = document.getElementById("resultContainer13");
 
     resultContainer.innerHTML = `
-    <p>${splitParam[0].substring(1)}</p>\n
-    <p>${splitParam[1]}</p>
-  `;
+    <p style="color:#21d921; display:inline;">${splitParam[0].substring(1)}</p> AND <p style="color:#21d921; display:inline;">${
+      splitParam[1]
+    }</p>`;
   }
 
   getParameters(stringOneInput);
@@ -303,7 +303,7 @@ document.getElementById("resultBtn14").addEventListener("click", function () {
     let resultContainer = document.getElementById("resultContainer14");
 
     resultContainer.innerHTML = `
-      <p>Days to weekend: ${daysToWeekend} day(s)</p>
+      <p style="color: #21d921">Days to weekend: ${daysToWeekend} day(s)</p>
     `;
   }
 
