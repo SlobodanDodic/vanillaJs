@@ -1,0 +1,58 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+label {
+  display: inline-block;
+  width: 100px;
+  text-align: end;
+  height: 24px;
+}
+
+input {
+  display: inline-block;
+  width: 300px;
+  margin-top: 1rem;
+  height: 24px;
+}
+
+select {
+  display: inline-block;
+  width: 308px;
+  margin-top: 1rem;
+  height: 24px;
+}
+
+button {
+  display: inline-block;
+  width: 100%;
+  margin-top: 1rem;
+  height: 24px;
+}
+
+table {
+  border: none;
+  border-spacing: 5px;
+}
+
+td {
+  width: 150px;
+  padding: 5px;
+  text-align: center;
+  box-shadow: 2px 2px 5px #c0c0c0;
+  border-radius: 4px;
+}
+
+.first {
+  background-color: beige;
+}
+
+.eco {
+  visibility: hidden;
+  font-size: large;
+  font-weight: bold;
+  color: green;
+}
