@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../img/logo.png" type="image/png" sizes="16x16">
+  <link rel="stylesheet" href="../../css/style.css">
+  <title>JS Modul 2.4</title>
+
+  <style type="text/css">
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    select,
+    input {
+      display: inline-block;
+      width: 45%;
+      height: 24px;
+      margin-bottom: 1rem;
+    }
+
+    h2#secret {
+      visibility: hidden;
+    }
+
+    #placeholder {
+      width: 45%;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>
+    <span>JS</span>
+    <span style="color: black; text-shadow: 3px 2px 3px #737373;">＜Modul/＞</span>
+    <span>T4</span>
+  </h1>
+
+  <pre>
+    <code>
+<span> 
+<i>Zadatak 1</i>
+
+
+Napraviti na html stranici dugme koje ce kada se klikne pozvati odgovarajucu funkciju 
+i na stranici ce ispisati: "Hello world!".
+</span>
+
+document.getElementById("resultBtn1").addEventListener("click", function () {
+  function getHello() {
+    let resultContainer = document.getElementById("resultContainer1");
+
+    resultContainer.innerHTML = `﹤p style="color: #21d921">Hello world!﹤p/﹥`;
+  }
+
+  getHello();
+});
+
+<button id="resultBtn1">Click to See Results</button>
+
+<div id="resultContainer1"></div>
+
+    </code>
+  </pre>
+
+  <pre>
+    <code>
+<span> 
+<i>Zadatak 2</i>
+
+
+Modifikovati zadatak 2 tako da se sada klikom na dugme 
+salju dva parametra (ime i prezime osobe), 
+tako da ce na stranici pisati npr: Hello Pera Peric!
+</span>
+
+document.getElementById("resultBtn2").addEventListener("click", function () {
+  let name = prompt("Your name");
+  let lastname = prompt("Your lastname");
+
+  function getHelloName(name, lastname) {
+    let resultContainer = document.getElementById("resultContainer2");
+
+    resultContainer.innerHTML = 
+      `﹤p style="color: #21d921">Hello ${name} ${lastname}!﹤/p>`;
+  }
+
+  getHelloName(name, lastname);
+});
+
+<button id="resultBtn2">Click to See Results</button>
+
+<div id="resultContainer2"></div>
+
+    </code>
+  </pre>
+
+  <pre>
+    <code>
+<span> 
+<i>Zadatak 3</i>
+
+
+a) Dodati na HTML stranicu select (combo box) sa proizvoljnim vrednostima i 
+dodati jos jedno tekstualno polje.
+- Javascriptom omoguciti da kad se promeni vrednost u selectu,
+da se ta ista vrednost upise u tekstualno polje koje se nalazi na stranici.
+
+b) Dodati na stranicu jos jednu dugme ciji se sadrzaj koji se nalazi u tekstuelnom polju
+upisuje u header h2 i koji se nalazi na stranici sa id-em “secret”, a inicijalno je sakriven.
+</span>
+
+function insert(param) {
+  const button = document.getElementById("inputBtn");
+  if (!!param.value.length) {
+    button.disabled = false;
+  }
+  document.getElementById("placeholder").value = param.value;
+  }
+
+function handleInsert() {
+  let tmp = document.getElementById("placeholder").value;
+  document.getElementById("secret").innerHTML = tmp;
+  document.getElementById("secret").style.visibility = "visible";
+}
+
+<form>
+  <select onchange="insert(this)">
+      <option value="saab">saab</option>
+      <option value="volvo">volvo</option>
+      <option value="mercedes">mercedes</option>
+      <option value="audi">audi</option>
+  </select>
+  <input type="text" name="placeholder" id="placeholder">
+  <input type="button" value="Klikni me!" id="inputBtn" disabled onclick="handleInsert()">
+  <h2 id="secret">Inicijalno</h2>
+</form>
+
+    </code>
+  </pre>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
