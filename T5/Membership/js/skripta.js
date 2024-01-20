@@ -239,12 +239,6 @@ if (window.location.pathname === "/T5/Membership/next.html") {
       let gold = destinations.filter((destination) => destination.type !== "platinum");
       let platinum = destinations.filter((destination) => destination);
 
-      function addOptionsToSelect(options) {
-        options.forEach((destination) => {
-          select2.add(new Option(destination.name, destination.name));
-        });
-      }
-
       if (passenger_status) {
         if (membership === "Silver") {
           addOptionsToSelect(silverAndOrdinary);
@@ -257,6 +251,13 @@ if (window.location.pathname === "/T5/Membership/next.html") {
         addOptionsToSelect(ordinary);
       }
     };
+
+    // Popunjava options u select-u sa destination:
+    function addOptionsToSelect(options) {
+      options.forEach((destination) => {
+        select2.add(new Option(destination.name, destination.name));
+      });
+    }
 
     // Metoda getMembership() vraca odgovarajuci string za prosledjeni broj:
     function getMembership(value) {
