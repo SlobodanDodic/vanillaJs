@@ -192,45 +192,73 @@ if (window.location.pathname === "/T5/Membership/next.html") {
       }
 
       // Select koji sadrzi moguce destinacije:
+      // let select2 = document.getElementById("select2");
+
+      // if (passenger_status) {
+      //   let membership = getMembership(obj.klasa);
+
+      //   for (let i in destinations) {
+      //     let canAdd = false;
+      //     let destination = destinations[i];
+
+      //     if (destination.type == "platinum" && membership == "Platinum") {
+      //       canAdd = true;
+      //     } else if (destination.type == "gold" && (membership == "Gold" || membership == "Platinum")) {
+      //       canAdd = true;
+      //     } else if (
+      //       destination.type == "silver" &&
+      //       (membership == "Gold" || membership == "Platinum" || membership == "Silver")
+      //     ) {
+      //       canAdd = true;
+      //     } else if (destination.type == "ordinary") {
+      //       canAdd = true;
+      //     } else {
+      //       canAdd = false;
+      //     }
+
+      //     if (canAdd) {
+      //       select2.options[select2.options.length] = new Option(destinations[i].name, destinations[i].name);
+      //     }
+      //   }
+      // } else {
+      //   for (let i in destinations) {
+      //     let destination = destinations[i];
+      //     if (destination.type == "ordinary") {
+      //       select2.options[select2.options.length] = new Option(destinations[i].name, destinations[i].name);
+      //     }
+      //   }
+      // }
+
       let select2 = document.getElementById("select2");
+      let membership = getMembership(obj.klasa);
+
+      let ordinary = destinations.filter((destination) => destination.type === "ordinary");
+      let silverAndOrdinary = destinations.filter(
+        (destination) => destination.type === "silver" || destination.type === "ordinary"
+      );
+      let gold = destinations.filter((destination) => destination.type !== "platinum");
+      let platinum = destinations.filter((destination) => destination);
+
+      function addOptionsToSelect(options) {
+        options.forEach((destination) => {
+          select2.add(new Option(destination.name, destination.name));
+        });
+      }
 
       if (passenger_status) {
-        let membership = getMembership(obj.klasa);
-
-        for (let i in destinations) {
-          let canAdd = false;
-          let destination = destinations[i];
-
-          if (destination.type == "platinum" && membership == "Platinum") {
-            canAdd = true;
-          } else if (destination.type == "gold" && (membership == "Gold" || membership == "Platinum")) {
-            canAdd = true;
-          } else if (
-            destination.type == "silver" &&
-            (membership == "Gold" || membership == "Platinum" || membership == "Silver")
-          ) {
-            canAdd = true;
-          } else if (destination.type == "ordinary") {
-            canAdd = true;
-          } else {
-            canAdd = false;
-          }
-
-          if (canAdd) {
-            select2.options[select2.options.length] = new Option(destinations[i].name, destinations[i].name);
-          }
+        if (membership === "Silver") {
+          addOptionsToSelect(silverAndOrdinary);
+        } else if (membership === "Gold") {
+          addOptionsToSelect(gold);
+        } else if (membership === "Platinum") {
+          addOptionsToSelect(platinum);
         }
       } else {
-        for (let i in destinations) {
-          let destination = destinations[i];
-          if (destination.type == "ordinary") {
-            select2.options[select2.options.length] = new Option(destinations[i].name, destinations[i].name);
-          }
-        }
+        addOptionsToSelect(ordinary);
       }
     };
 
-    // Metdoa getMembership() vraca odgovarajuci string za prosledjeni broj:
+    // Metoda getMembership() vraca odgovarajuci string za prosledjeni broj:
     function getMembership(value) {
       if (value == 1) {
         return "Silver";
