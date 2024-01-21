@@ -115,7 +115,7 @@ var karte = [
 
 let mapa = {};
 
-for (card of karte) {
+for (let card of karte) {
   if (!(card.boja in mapa)) {
     mapa[card.boja] = 0;
   }
@@ -124,8 +124,6 @@ for (card of karte) {
     mapa[card.boja] += 1;
   }
 }
-
-console.log(mapa);
 
 let maxBoja = "";
 let maxBroj = -1;
@@ -136,9 +134,6 @@ for (let boja in mapa) {
     maxBoja = boja;
   }
 }
-
-console.log(maxBoja);
-console.log(maxBroj);
 
 let counter = 0;
 for (let karta of karte) {
