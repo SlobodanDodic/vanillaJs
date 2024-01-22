@@ -6,36 +6,60 @@
 // Kreirati objekat hotel koji nasledjuje smestaj i koji pored postojecih atributa iz smestaj ima atribut broj zvezdica (hotela).
 // Hotel redefinise metodu stampaj tako da jos ispisuje broj zvezdica i ima jos jednu dodatnu metodu predstaviSe koja ukratko opisuje hotel.
 
-class Smestaj {
-  constructor(naziv, adresa, grad) {
-    this.naziv = naziv;
-    this.adresa = adresa;
-    this.grad = grad;
-  }
-  stampaj() {
+let smestaj = {
+  naziv: "Inn",
+  adresa: "Bulevar Liberta 47",
+  grad: "Sombor",
+  stampaj: function () {
     document.write(`Smestaj: ${this.naziv} ${this.adresa} ${this.grad} <br />`);
-  }
-}
+  },
+};
 
-class Hotel extends Smestaj {
-  constructor(naziv, adresa, grad, zvezdica) {
-    super(naziv, adresa, grad);
-    this.zvezdica = zvezdica;
-  }
+let hotel = Object.create(smestaj);
 
-  predstaviSe() {
-    document.write(`Opis hotela: ${this.naziv} ${this.adresa} ${this.grad} ${this.zvezdica}<br />`);
-  }
+hotel.zvezdica = 4;
+hotel.predstaviSe = function () {
+  document.write(`Opis hotela: ${this.naziv} ${this.adresa} ${this.grad} ${this.zvezdica}<br />`);
+};
+hotel.stampaj = function () {
+  smestaj.stampaj.call(this);
+  document.write(`Hotel: ${this.naziv} ${this.adresa} ${this.grad} ${this.zvezdica}<br />`);
+};
 
-  stampaj() {
-    super.stampaj();
-    document.write(`Hotel: ${this.naziv} ${this.adresa} ${this.grad} ${this.zvezdica}<br />`);
-  }
-}
+smestaj.stampaj();
+hotel.stampaj();
+hotel.predstaviSe();
 
-let smestajInn = new Smestaj("SmestajInn", "Bulevar Liberta 47", "Sombor");
-smestajInn.stampaj();
+// class Smestaj {
+//   constructor(naziv, adresa, grad) {
+//     this.naziv = naziv;
+//     this.adresa = adresa;
+//     this.grad = grad;
+//   }
+//   stampaj() {
+//     document.write(`Smestaj: ${this.naziv} ${this.adresa} ${this.grad} <br />`);
+//   }
+// }
 
-let hotelInn = new Hotel("HotelInn", "Bulevar Liberta 39", "Novi Sad", "4❇");
-hotelInn.stampaj();
-hotelInn.predstaviSe();
+// class Hotel extends Smestaj {
+//   constructor(naziv, adresa, grad, zvezdica) {
+//     super(naziv, adresa, grad);
+//     this.zvezdica = zvezdica;
+//   }
+
+//   predstaviSe() {
+//     document.write(`Opis hotela: ${this.naziv} ${this.adresa} ${this.grad} ${this.zvezdica}<br />`);
+//   }
+
+//   stampaj() {
+//     super.stampaj();
+//     document.write(`Hotel: ${this.naziv} ${this.adresa} ${this.grad} ${this.zvezdica}<br />`);
+//   }
+// }
+
+// let smestajInn = new Smestaj("SmestajInn", "Bulevar Liberta 47", "Sombor");
+// smestajInn.stampaj();
+
+// let hotelInn = new Hotel("HotelInn", "Bulevar Liberta 39", "Novi Sad", "4❇");
+// hotelInn.stampaj();
+// hotelInn.predstaviSe();

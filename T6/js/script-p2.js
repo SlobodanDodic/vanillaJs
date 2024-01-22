@@ -9,3 +9,9 @@
 // Kreirate objekat Email poruka koji nasledjuje poruku.
 // Od dodatnih atributa ima email adrese posiljaoca i primaoca i redefinise metodu stampaj tako da ukljucuje pomenute atribute.
 // Pored toga ima jos jednu metodu koja se zove potpisPosiljaoca i koja ima jedan parametar koji ce biti ispisan kao potpid.
+
+const poruka = {
+  posiljaoc: "",
+  primaoc: "",
+  poruka: "",
+};
