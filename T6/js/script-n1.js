@@ -6,6 +6,9 @@
 // saberi5(7); //13
 
 // Closure Function:
+// -- Closure je sposobnost funkcije da uskladišti promenljivu za dalju referencu čak i nakon što je izvršena.
+// -- Closure omogućava funkciji da zadrži pristup promenljivama iz okoline u kojoj je bila kreirana, čak i kada je pozvana izvan te okoline.
+// -- Korisno je u situacijama kada želimo sačuvati određeno stanje ili informacije koje će biti korišćene u budućim pozivima te funkcije.
 
 function outerFn(osnova) {
   function innerFn(broj) {
