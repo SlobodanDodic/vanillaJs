@@ -50,3 +50,6 @@ let resultKoren = map(n, function (number) {
   return Math.sqrt(number).toFixed(2);
 });
 console.log(`Vrednost originalnog niza: ${n} \n Resultat map fn: ${resultKoren}`);
+
+// Opcija 2:
+// let resultKoren = map(n, Math.sqrt);

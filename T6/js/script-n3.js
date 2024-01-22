@@ -10,35 +10,28 @@
 // Ukoliko je uneta vrednost broj, proveriti da li prosledjena cb fn vraca true i upisati u polje sa id-jem output tekst: Kupovina uspesna!
 // Ukoliko callback funkcija vraca false, upisati u polje sa id-jem output tekst: Kupovina neuspesna!
 
-function klikniMe(param) {
-  let btn = param.innerText;
-  let input = param.value;
+// HELP COMMENT:
+// Funkcija klikniMe kao parametar prima callback, a u sebi sa querySelectorom ili po IDju selektuje input polje i preuzima vrednost.
+// Pa tu vrednost prosledjuje callback funkciji.
+// U htmlu na dugmetu onda treba da stavite:
+// <button type="button" class="btn btn-primary col-sm-5" onclick="klikniMe(Modul.proveraMaloprodaja)">Maloprodajni</button>
 
-  console.log(Modul.proveraMaloprodaja(input));
+function klikniMe(btn, cb) {
+  let input = document.getElementById("kolicina");
+  let outputText = cb(input.value) ? "Kupovina uspesna!" : "Kupovina neuspesna!";
 
-  console.log(input);
-  console.log(btn);
-
-  if (input === "") {
+  if (input.value === "") {
     alert("Polje za unos količine je prazno!");
+    input.value = "";
     return;
   }
-  if (isNaN(input)) {
+
+  if (isNaN(input.value)) {
     alert("Uneli ste vrednost koja nije broj!");
+    input.value = "";
+    return;
   }
 
-  // document.getElementById("output").innerText = "Kupovina neuspesna!";
-
-  if (btn == "Maloprodajni") {
-    Modul.proveraMaloprodaja(input);
-    console.log(input);
-    document.getElementById("output").innerText = "Kupovina uspesna!";
-  } else if (btn == "Veleprodajni") {
-    Modul.proveraVeleprodaja(input);
-    document.getElementById("output").innerText = "Kupovina uspesna!";
-  }
+  console.log(`${btn.textContent}: ${input.value}`);
+  document.getElementById("output").innerText = outputText;
 }
-
-// Provera Modul-a:
-// console.log(Modul.proveraMaloprodaja(199));
-// console.log(Modul.proveraVeleprodaja(179));

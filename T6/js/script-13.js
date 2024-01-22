@@ -1,5 +1,9 @@
 // Zadatak 13:
 
+// Komentar nakon pregleda:
+// U 13. zadatku mogli ste da imate jednu mapu koja sadrzi samo karte po boji pa onda sa for petljom prolazite kroz njih
+// i brojite koliko su u slike (ne zanima nas tacno tip slike :) ).
+
 // Za svaku boju koja je prisutna u nizu ispisati koliko karti procentualno su slike ("A", "J", "Q", "K").
 const karte = [
   { boja: "tref", broj: "4" },

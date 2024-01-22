@@ -1,0 +1,59 @@
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Forma za logovanje</title>
+  <script type="text/javascript">
+
+    function provera(forma) {
+      var poruka = document.getElementById("poruka");
+
+      const ime = forma.ime.value;
+      const lozinka = forma.lozinka.value;
+
+      console.log(ime, lozinka)
+
+      // !(ime === "pera" && lozinka === "peric")) 
+
+      //Provera da li su uneti korisnici ime pera, lozinka peric ili ime mika, lozinka mikic ako nisu return false
+      if (ime === "mika" && lozinka === "mikic") {
+        poruka.innerHTML = "Name and password are valid";
+        return true;
+      } else {
+        poruka.innerHTML = "Please enter a valid name and password";
+        return false;
+      }
+
+    }
+  </script>
+</head>
+
+<body>
+
+  <!-- <form action="./p3-webShop.html" method="get" onsubmit="return provera(this)"> -->
+  <form onchange="provera(this)">
+    <table style="border: solid 1px">
+      <tr>
+        <td> Korisničko ime: </td>
+        <td> <input type="text" name="ime" /> </td>
+      </tr>
+      <tr>
+        <td> Lozinka: </td>
+        <td> <input type="text" name="lozinka" /> </td>
+      </tr>
+      <tr>
+        <td colspan="2" align="right"><input type="submit" value="LogIn" /> </td>
+      </tr>
+    </table>
+  </form>
+  <p id="poruka" style="color:red">
+  </p>
+  <p>
+    Dostupni korisnici za logovanje su: <br />
+    &nbsp; pera peric - maloprodajni korisnik <br />
+    &nbsp; mika mikic - veleprodajni korisnik <br />
+
+  </p>
+</body>
+
+</html>
