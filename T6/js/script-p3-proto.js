@@ -1,24 +1,36 @@
-var korisnik;
-
-// Funkcija za ispisivanje poruka na stranici, poziva je metoda stampaj od korisnika
-function writeMessage(message) {
-  var p = document.getElementById("poruka");
-  p.innerHTML = message;
-}
+// Funkcija za ispisivanje poruka na stranici, poziva je metoda stampaj od korisnika:
+// Funkcija stampaj se dodaje u prototip korisnika (dodati metodu stampaj koja poziva writeMessage)
 
 //TODO Napraviti korisnika
+let korisnik = {
+  ime: "",
+  lozinka: "",
 
-// Funkcija stampaj se dodaje u prototip korisnika
-//TODO dodati metodu stampaj koja poziva writeMessage
+  stampaj: function (message) {
+    var p = document.getElementById("poruka");
+    p.innerHTML = message;
+  },
+
+  ispis: function (message) {
+    console.log(message.value);
+  },
+};
 
 //Nasledjujemo korisnika i podesavamo mu konstruktor
-
 //TODO maloprodajni korisnik
+let maloprodajniKorisnik = Object.create(korisnik);
 
-// Ova funkcija se poziva klikom na dugme dodaj na html stranici
-// korisnik.ispis(this)
-//  U ovoj funkciji se racuna cena za proizvod, identicna je i za veleprodajnog korisnika uz popust od 15% za neki proizvod
+maloprodajniKorisnik.ispis = function (number) {
+  console.log(number);
+};
 
-//TODO metoda isipis, izracunati vrednost i pozvati wrtie message.
+// korisnik.ispis(this) - Ova funkcija se poziva klikom na dugme dodaj na html stranici
+// U ovoj funkciji se racuna cena za proizvod, identicna je i za veleprodajnog korisnika uz popust od 15% za neki proizvod
+//TODO metoda isipis, izracunati vrednost i pozvati write message.
 
 //TODO VeleprodajniKorisnik
+let veleprodajniKorisnik = Object.create(korisnik);
+
+veleprodajniKorisnik.ispis = function (number) {
+  console.log(number * 0.15);
+};

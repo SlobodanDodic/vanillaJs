@@ -11,27 +11,27 @@
       const ime = forma.ime.value;
       const lozinka = forma.lozinka.value;
 
-      console.log(ime, lozinka)
-
-      // !(ime === "pera" && lozinka === "peric")) 
-
-      //Provera da li su uneti korisnici ime pera, lozinka peric ili ime mika, lozinka mikic ako nisu return false
-      if (ime === "mika" && lozinka === "mikic") {
-        poruka.innerHTML = "Name and password are valid";
-        return true;
-      } else {
+      if (ime === '' || lozinka === '') {
         poruka.innerHTML = "Please enter a valid name and password";
         return false;
+      } else {
+        if (ime === "mika" && lozinka === "mikic") {
+          poruka.innerHTML = "Name and password are valid";
+          return true;
+        } else if ((ime === "pera" && lozinka === "peric")) {
+          poruka.innerHTML = "Name and password are valid";
+        } else {
+          poruka.innerHTML = "Please enter a valid name and password";
+          return false;
+        }
       }
-
     }
   </script>
 </head>
 
 <body>
 
-  <!-- <form action="./p3-webShop.html" method="get" onsubmit="return provera(this)"> -->
-  <form onchange="provera(this)">
+  <form action="./p3-webShop.html" method="get" onsubmit="return provera(this)">
     <table style="border: solid 1px">
       <tr>
         <td> Korisničko ime: </td>

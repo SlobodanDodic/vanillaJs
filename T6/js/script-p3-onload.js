@@ -10,19 +10,31 @@
 
 //
 
-// Prilikom ucitavanja stranice uzimamo parametre iz browsera
-// Gde nam se nalaze korisnicko ime i lozinka
+// Prilikom ucitavanja stranice uzimamo parametre iz browsera gde nam se nalaze korisnicko ime i lozinka
 window.onload = function () {
-  var podaci = window.location.search.substring(1).split("&");
+  let podaci = window.location.search.substring(1).split("&");
   if (podaci == "") {
     window.location = "login.html";
   }
   // Obradjujemo te podatke tako da izvucemo i korisnicko ime i lozinku
-  var ime = podaci[0].split("=")[1];
-  var lozinka = podaci[1].split("=")[1];
+  let ime = podaci[0].split("=")[1];
+  let lozinka = podaci[1].split("=")[1];
 
   // U zavisnosti od korisnickog imena kreiramo maloprodajnog ili veleprodajnog korisnika
-  // TODO Napraviti korisnika u zavisnosti od imena
+  if (ime == "pera") {
+    maloprodajniKorisnik.ime = ime;
+  }
+  if (ime == "mika") {
+    veleprodajniKorisnik.ime = ime;
+  }
+
+  // let cena1 = document.getElementById("itemCount1").value;
+  // let cena2 = document.getElementById("itemCount2").value;
+  // let cena3 = document.getElementById("itemCount3").value;
+
+  // let suma = cena1 + cena2 + cena3;
+
+  console.log(maloprodajniKorisnik);
 
   //Poziv metode stampaj
   korisnik.stampaj();
