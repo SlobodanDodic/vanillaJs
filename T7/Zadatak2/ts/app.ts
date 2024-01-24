@@ -6,9 +6,9 @@
 // Izmeniti zadatak tako da se ispisuje odgovarajući indeks dugmeta.
 
 window.onload = function () {
-  let nodes = document.getElementsByTagName("button");
+  let nodes = document.getElementsByTagName("button") as HTMLCollectionOf<HTMLButtonElement>;
 
-  for (let i = 0; i < nodes.length; i++) {
+  for (let i: number = 0; i < nodes.length; i++) {
     nodes[i].addEventListener("click", function () {
       console.log("Kliknuo si na dugme #" + i);
     });
