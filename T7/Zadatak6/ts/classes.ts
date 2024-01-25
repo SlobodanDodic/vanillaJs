@@ -20,17 +20,16 @@ class Student {
   private _prezime: string;
   private _fakultet: string;
   private _broj_indeksa: string;
-  private _prosecna_ocena: number;
   private _polozeni_predmeti: Predmet[];
+  private _prosecna_ocena: number;
 
-  public constructor(_ime: string, _prezime: string, _fakultet: string, _broj_indeksa: string, _prosecna_ocena: number, _polozeni_predmeti: Predmet[]) {
+  public constructor(_ime: string, _prezime: string, _fakultet: string, _broj_indeksa: string) {
     this._ime = _ime;
     this._prezime = _prezime;
     this._fakultet = _fakultet;
     this._broj_indeksa = _broj_indeksa;
-
-    this._polozeni_predmeti = _polozeni_predmeti;
-    this._prosecna_ocena = _prosecna_ocena;
+    this._polozeni_predmeti = [];
+    this._prosecna_ocena = 0;
   };
 
   public dodajPolozeniPredmet(predmet: Predmet): void {
@@ -101,6 +100,3 @@ class Predmet {
     return this._ime_profesora;
   }
 }
-
-// let ocene = [8, 7, 6, 9, 8, 10, 8];
-// let student = { ime: "Pera", prezime: "Peric", fakultet: "FTN", broj_indeksa: "RA-1", prosecna_ocena: 0 };

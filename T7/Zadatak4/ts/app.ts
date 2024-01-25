@@ -22,7 +22,7 @@ class Pas {
   private _vakcinisan: boolean;
   private _rasa: string;
 
-  public constructor(_ime: string, _starost: number, _rasa: string, _vakcinisan: boolean = false,) {
+  public constructor(_ime: string, _starost: number, _rasa: string, _vakcinisan: boolean = false) {
     this._ime = _ime;
     this._starost = _starost;
     this._vakcinisan = _vakcinisan;

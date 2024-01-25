@@ -61,39 +61,12 @@ function proveraForme(form: IForm) {
 
 function handleSubmit(form: IForm) {
   if (proveraForme(form)) {
-    let predmetiElement = document.getElementById("predmeti") as HTMLInputElement;
-
     const ime = form.ime.value;
     const prezime = form.prezime.value;
     const fakultet = form.fakultet.value;
     const indeks = form.indeks.value;
-    const predmeti = predmetiElement.value;
 
-    const arrayPredmeti = predmeti && predmeti.split(";");
-
-    const predmetiObjekti = arrayPredmeti && arrayPredmeti.map((predmetString) => {
-      const [idT, naziv_predmetaT, profesorT, ocenaStrT] = predmetString.split(", ");
-
-      const id = idT.replace("id", "").trim();
-      const naziv_predmeta = naziv_predmetaT.replace("naziv", "").trim();
-      const profesor = profesorT.replace("profesor", "").trim();
-      const ocenaStr = ocenaStrT.replace("ocena", "").trim();
-
-      const ocena = Number(ocenaStr);
-
-      return new Predmet(id, naziv_predmeta, profesor, ocena);
-    });
-
-    let sumaOcena = 0;
-    let prosecnaOcena = 0;
-    for (let predmet of predmetiObjekti) {
-      sumaOcena += predmet.ocena;
-
-      prosecnaOcena = sumaOcena / predmetiObjekti.length;
-      prosecnaOcena = parseFloat(prosecnaOcena.toFixed(2));
-    }
-
-    const noviStudent = new Student(ime, prezime, fakultet, indeks, prosecnaOcena, predmetiObjekti);
+    const noviStudent = new Student(ime, prezime, fakultet, indeks);
     studenti.push(noviStudent);
 
     const tekstDiv = document.getElementById("tekst") as HTMLDivElement;
@@ -156,6 +129,3 @@ function prikaziOmiljeneProfesore() {
     tekstDiv.appendChild(div);
   });
 }
-
-//id 01, naziv Matematika, profesor Proka Pronalazač, ocena 8;id 02, naziv Programiranje, profesor Profa Milutin, ocena 7;id 03, naziv Fizika, profesor Doktor T, ocena 6;id 04, naziv Hemija, profesor Magi Star, ocena 9;id 05, naziv Web development, profesor Miloje fon Brown, ocena 8;id 06, naziv Osnove elektrotehnike, profesor Edvin van der Ćirković, ocena 10;id 07, naziv Dendrologija, profesor Stevie Ray Vaughan, ocena 10
-//id 01, naziv Matematika, profesor Proka Pronalazač, ocena 8;id 02, naziv Programiranje, profesor Profa Milutin, ocena 9;id 03, naziv Fizika, profesor Doktor T, ocena 6;id 04, naziv Hemija, profesor Magi Star, ocena 9;id 05, naziv Web development, profesor Miloje fon Brown, ocena 9;id 06, naziv Osnove elektrotehnike, profesor Edvin van der Ćirković, ocena 10;id 07, naziv Dendrologija, profesor Stevie Ray Vaughan, ocena 11

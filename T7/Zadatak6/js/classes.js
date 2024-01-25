@@ -11,13 +11,13 @@
 // -- Ta metoda racuna prosecnu ocenu i upisuje u atribut prosecna_ocena.
 //Napraviti metodu omiljeni profesori koja vraca niz sa imenima profesora kod koga student ima ocenu 11.
 var Student = /** @class */ (function () {
-    function Student(_ime, _prezime, _fakultet, _broj_indeksa, _prosecna_ocena, _polozeni_predmeti) {
+    function Student(_ime, _prezime, _fakultet, _broj_indeksa) {
         this._ime = _ime;
         this._prezime = _prezime;
         this._fakultet = _fakultet;
         this._broj_indeksa = _broj_indeksa;
-        this._polozeni_predmeti = _polozeni_predmeti;
-        this._prosecna_ocena = _prosecna_ocena;
+        this._polozeni_predmeti = [];
+        this._prosecna_ocena = 0;
     }
     ;
     Student.prototype.dodajPolozeniPredmet = function (predmet) {
@@ -83,6 +83,4 @@ var Predmet = /** @class */ (function () {
     });
     return Predmet;
 }());
-// let ocene = [8, 7, 6, 9, 8, 10, 8];
-// let student = { ime: "Pera", prezime: "Peric", fakultet: "FTN", broj_indeksa: "RA-1", prosecna_ocena: 0 };
 //# sourceMappingURL=classes.js.map
