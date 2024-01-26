@@ -1,0 +1,497 @@
+1. 
+	a) U folderu 1. Vinarija implementirati:
+		-	Konstruktor kopije za Vino
+		-	CRUD operacije za Vinariju https://en.wikipedia.org/wiki/Create,_read,_update_and_delete#:~:text=In%20computer%20programming%2C%20create%2C%20read,computer%2Dbased%20forms%20and%20reports.
+	
+	b) Implementirati ispis vina iz vinarije:
+		- U okviru vinarije implementirati printWines() metodu.
+		-	Na index.html stranici nalazi se tabela sa 8 kolona. ID tbody taga te tabele je "prikaz".
+		-	Popuniti tbody tag tabele tako da svako vino je predstavljeno uz pomoc jednog reda u tabeli.
+		-	Za svako vino treba da se generise sledeci html sadrzaj i upise u tbody:
+		
+		<tr>
+			<td>1</td>
+			<td>CHATEAU DE SAINT COSME</td>
+			<td>Grenache / Syrah</td>
+			<td>France</td>
+			<td>Southern Rhone / Gigondas</td>
+			<td>2009</td>
+			<td></td>
+			<td></td>
+		</tr>
+		
+		-	Poslednja dva td-a ce biti popunjena u zadtku 1. d) i 1. e)
+		-	U okviru windows.onload (app.ts) pozvati metodu printWines vinarije.
+	
+	c)	Implementirati dodavanje novog vina.
+		-	U okviru window.onload dodati reakciju na submit dogadjaj forme sa id-jom "unosForma".
+		-	Spreciti defaultno ponasenje submit dogadjaja (pozvati "preventDefault" metodu nad event objektom).
+			Event objekat je prvi parametar koji prima callback funkcija koja se prosledjuje "addEventListener" metodi.
+		-	Pokupiti vrednosti svih input polja ukljucujuci i polje id koje je hidden.
+		-	Na osnovu vrednosti input polja napraviti objekat (uz pomoc objekat literala) da izgleda
+			kao objekti js/podaci.js fajlu.
+		-	Napravite instancu klase Vino na osnovu objekta. I dodati ga u vinariju sa odgovarajucom CRUD metodom.
+		-	Nakon dodavanja pozvati printWines metodu vinarije.
+	
+	d) Implementirati brisanje vina iz vinarije.
+		-	U printWines metodi prosirit ispis tako da poslednja kolona tabele u sebi sadrzi forme za brisanje.
+		-	Primer kako poslednja celija (td polje) treba da izgleda:
+		
+		<td>
+			<form class="row g-3 deleteForm">
+				<input type="text" value="1" name="id" style="display: none;">
+				<div class="col-auto">
+					<button type="submit" class="btn btn-primary mb-3">Obriši</button>
+				</div>
+			</form>
+		</td>
+		
+		- 	Jedina vrednost koja se menja u gore pomenutom html sadrzaju je value="1" je zapravo value=`${vino.id}`.
+			Odnosno id vina koje trenutno ispisujemo u printWines metodi.
+		-	Svako vino u vinariji (odnosno red u tabeli) ce imati formu koja u sebi sadrzi klasu "deleteForm".
+		-	U app.ts u okviru wireEvents metode implementirati za svaku "deleteForm"-u reakciju na submit dogadjaj.
+		-	Selektovati sve DOM elemente koji imaju klasu "deleteForm".
+		-	Svakom sleketovanom DOM elementu dodati reakciju na submit dogadjaj.
+		-	Spreciti defaultno ponasenje submit dogadjaja.
+		-	Preuzeti id forme (iskoristiti this, this u okviru reakcije na dogadjaj predstavlja 
+			DOM elemenat koji reaguje na taj dogadjaj, forma u ovom slucaju)
+		-	Pozvati CRUD metodu za brisanje elementa vinarije.
+		-	Pozvati printWines metodu.
+		-	Pozvati wireEvents funkciju u:
+			-	U okviru rekacije na submit dogadjaj "deletForm"-e.
+			-	U okviru rekacije na submit dogadjaj "unosForma"-e.
+			-	Na kraju window.onload-a.
+			(Zasto se ovo poziva i zasto je bitno da reakcija "unosForma"-e ne bude u wireEvents? Prodiskutovati sa predavacem.)
+	
+	e) Implementirati izmenu unetog vina iz vinarije.
+		-	U printWines metodi prosirit ispis tako da pretposlednja kolona tabele u sebi sadrzi forme za izmenu.
+		-	Primer kako pretposlednja celija (td polje) treba da izgleda:
+		
+		<td>
+			<form class="row g-3 editForm">
+				<input type="text" value="1" name="id" style="display: none;">
+				<div class="col-auto">
+					<button type="submit" class="btn btn-primary mb-3">Izmeni</button>
+				</div>
+			</form>
+		</td>
+		
+		-	Ponasanje je isto kao i "deletForm".
+		-	Svako vino u vinariji (odnosno red u tabeli) ce imati formu koja u sebi sadrzi klasu "editForm".
+		-	U app.ts u okviru wireEvents metode implementirati za svaku "editForm"-u reakciju na submit dogadjaj.
+		-	Selektovati sve DOM elemente koji imaju klasu "editForm".
+		-	Svakom sleketovanom DOM elementu dodati reakciju na submit dogadjaj.
+		-	Spreciti defaultno ponasenje submit dogadjaja.
+		-	Preuzeti id forme (iskoristiti this, this u okviru reakcije na dogadjaj predstavlja 
+			DOM elemenat koji reaguje na taj dogadjaj, forma u ovom slucaju)
+		-	Prezeti vino iz vinarije sa preuzetim id-om pozivom odgvarajuce CRUD metode.
+		-	Promeniti visibilty input elementa sa id-jem "id" na "visible".
+		-	Izmeniti inner text h1 taga sa id-jem "header" na "Izmena vina".
+		-	Postaviti vrednosti input polja da imaju vrednost iz preuzetog objekta vina.
+		-	Pozvati "focus" metodu nad DOM elementom sa id-jem "name".
+		-	Proziriti reakciju submit dogadjaja "unosForma"-e tako da:
+			-	Ukoliko input polje "id" nema vrednost vrsi se dodavanje novog vina.
+			-	Ukoliko input polje "id" ima vrednost vrsi se izmena postojeceg vina.
+			-	Nakon poziva CRUD metoda za izmenu/dodavanje postaviti vrednost svih input polja na prazan string "".
+			-	Postaviti vidljivnost polja sa id-jem "id" na hidden.
+			-	Izmeniti inner text h1 taga sa id-jem "header" na "Dodavanje vina".
+			
+	f)	U okviru vinarije napraviti metodu koja vraca objekat sa najstarijim vinima po drzavi. 
+		Svojstva objekta treba da budu drzave a vrednosti treba da budu vina (najstarija po drzavi).
+		
+	g)	Prosiriti printWines metodu tako da celija sa id-jem vina ima zlatnu pozadinsku boju (#FFD700) ukoliko je najstarije za drzavu.
+		-	Na pocetku printWines pozvati metodu iz 1. f) zadatka.
+		-	Prilikom ispisa vina proveriti da li je za tu drzavu to vino najstarije (id je jednak najstarijem vinu iz objekta najstarijih).
+		-	Ukoliko jeste dodati attribut style koji podesava boju tog td-a.
+	
+		
+	
+2. U folderu 2. Bookatorijum. (Pre rada ovog zadatka resiti 1. Vinarija i koristit resenje kao referencu za rad.)
+	U fajlu ts/knjiga.ts
+	a) Implementirati klasu Knjiga.
+		-	Klasa Knjiga se sastoji od atributa:
+				private _id: number;
+	    			private _name: string;
+    				private _author: string;
+    				private _publisher: string;
+   				private _genre: string;
+	    			private _price: number;
+				private _sold: number;
+		-	Konstruktora kopije (za _sold atribut umesto null vrednosti dodeliti vrednost 0 ukoliko guard operator nije zadovoljen)
+		-	Geteri i seteri za sve atribute
+	U fajlu ts/knjizara.ts 
+	b) Implementirati klasu Knjizara.
+		-	Klasa Knjizara se sastoji od atributa:
+				private _spisakKnjiga: Knjiga[];
+				private _lastId: number;
+		-	Konsturktora:
+			U konstruktoru prvo inicijalizovati _spisakKnjiga.
+			Jedini parametar konstruktora je niz objekata (promenljiva tipa any).
+			Objekti tog niza se prosledjuju konstruktoru klase Knjiga.
+			Vrednost atributa this._lastId treba da dobija vrednosti id-a trenutno dodate knjige.
+		-	Getera i setera za atribute
+		-	Crud operacija:
+			-	getAll(): Knjiga[]
+			-	get(id: number): Knjiga
+			-	add(novaKnjiga: Knjiga): void
+			-	update(knjiga: Knjiga): void
+			-	remove(id: number): void
+		-	Metode: public printBooks(): void
+			Za svaku knjigu treba da se generise sledeci html sadrzaj i upise u tbody:
+
+			<tr>
+				<td>1</td>
+				<td>The Great Gatsby</td>
+				<td>F. Scott Fitzgerald</td>
+				<td>Penguin Random House</td>
+				<td>Classic</td>
+				<td>15.99</td>
+				<td>15</td>
+				<td>
+					<form class="row g-3 sellForm">
+        	                        	<input type="text" value="1" name="id" style="display: none;">
+	                	                <div class="col-auto">
+        	                	        	<button type="submit" class="btn btn-primary mb-3">Prodaj</button>
+                	                	</div>
+					</form>
+        	                </td>
+				<td>
+					<form class="row g-3 deleteForm">
+						<input type="text" value="1" name="id" style="display: none;">
+						<div class="col-auto">
+							<button type="submit" class="btn btn-primary mb-3">Obriši</button>
+						</div>
+					</form>
+				</td>
+			</tr>
+
+	U fajlu ts/app.ts 
+	c) U okviru window.onload:
+		-	Pozvati printBooks metodu knjizare
+		-	Implementirati dodavanje nove knjige kao reakciju na submit dogadaj forme sa id-jem "unosForma".
+	d) Implementirati wireEvents(): void funkciju:
+		-	Implementirati Prodavanje knjige kao reakciju na submit dogadjaj forme sa klasom "sellForm"
+			Kada se klikne na dugme prodaj povecava se vrednost sold atributa odgovarajuce knjige
+			i pozivaju se: printBooks metoda knjizare i wireEvents() funkcija.
+		-	Implementirati brisanje knjige kao reakcija na submit dogadjaj formi sa klasom "deleteForm" (identicno kao u zadatku vinarija)
+		-	Pozvati wireEvents funkciju na dnu window.onload
+	
+	U fajlu ts/knjizara.ts
+	e) Implementirati:
+		-	Metodu: private prosecnaCena(): number
+			Metoda racuna i vraca prosecnu cenu knjiga u knjizari.
+		-	Izmeniti printBooks metodu tako da:
+			- Ukoliko je cena knjige duplo veca od prosecne cene, red koji predstavlja tu knjigu treba da sadrzi klasu "gold":
+				<tr class="gold">
+					<td>9</td>
+					<td>Little House on the Prairie Bookset</td>
+					...
+					
+			- Ukoliko je cena knjige duplo manja od prosecne cene, red koji predstavlja tu knjigu treba da darzi klasu "green":
+				<tr class="green">
+					<td>2</td>
+					<td>To Kill a Mockingbird</td>
+					...
+	f) Implementirati:
+		-	Metodu public najprofitabilnijaKnjiga(): string
+			Metoda pronalazi najprofitabilniju knjigu za knjizaru.
+			Profitabilnost se racuna kao price * sold (cena puta ukupan broj prodati knjiga)
+			Metoda vraca tekst u formatu: 
+			`Najprofitabilnija knjiga je ${imeKnjige} sa ukupnim profitom od $${profit}!`;
+	g) Implementirati:
+		-	Metodu public najprodavanijaKnjigaPoZanru(): string
+			Metoda pronalazi najprodavanije knjige po zanru u knjizari i za svaki zanr ispisuje tu knjigu u formatu:
+			`<b>${Zanr}</b>: Najprodavanija "${Zanr}" knjiga je ${imeKnjige} sa ukupno prodatih ${brojProdatih} knjiga.<br/>`
+	U fajlu ts/app.ts 
+	h) U okviru window.onload:
+		-	Implementirati reakciju na klik dugmeta sa id-jem "profit"
+			Kao reakcija u <p> tag sa id-jem "sadrzaj" upisuje se vrednost metode najprofitabilnijaKnjiga() knjizare.
+		-	Implementirati reakciju na klik dugmeta sa id-jem "bestsellers"
+			Kao reakcija u <p> tag sa id-jem "sadrzaj" upisuje se vrednost metode najprodavanijaKnjigaPoZanru() knjizare.
+
+	
+			
+		
+			
+			
+3. U folderu 3. Restoran. 
+
+U fajlu StavkaJelovnika.ts implementirati klasu StavkaJelovnika:
+	-	StavkaJelovnika se sastoji od atributa:
+	
+		private _id: number;
+		private _naziv: string;
+		private _cena: number;
+		private _tip: string;
+		
+	-	Staticke promenljive LAST_ID:
+		
+		static LAST_ID: number = 0;
+	
+	-	Konstruktora:
+		-	Konstruktor kao paremetre prima vrednosti za sve atribute osim atributa _id;
+		-	U konstruktoru povecati vrednosti staticke promenljive (StavkaJelovnika.LAST_ID) za jedan
+		-	Atribut _id inicijalizovati na vrednosti staticke promenljive StavkaJelovnika.LAST_ID
+		-	Inicijalizovati ostale atribute.
+	
+	-	Getera i setera za sve atribute.
+	
+U fajlu StavkaPorudzbine.ts implementirati klasu StavkaPorudzbine:
+	
+	-	StavkaPorudzbine se sastoji od atributa:
+		
+		private _stavkaJelovnika: StavkaJelovnika;
+		private _kolicina: number;
+		
+	-	Konstruktora
+	-	Getera i setera za sva polja
+	
+U fajlu Porudzbina.ts implementirati klasu Porudzbina:
+
+	-	Porudzbina se sastoji od atributa:
+	
+		private _id: number;
+		private _imeKlijenta: string;
+		private _datum: Date;
+		private _status: string;
+		private _stavke: StavkaPorudzbine[];
+		
+	
+	-	Staticke promenljive LAST_ID:
+		
+		static LAST_ID: number = 0;
+		
+	-	Konstruktora:
+		-	Konstruktor kao paremetre prima vrednosti za sve atribute osim atributa _id i _stavke;
+		-	Za atribut _status napraviti da parametar konstruktora ima podrazumevanu (defaultnu) vrednost "Otvorena"
+		-	U konstruktoru povecati vrednosti staticke promenljive (Porudzbina.LAST_ID) za jedan
+		-	Atribut _id inicijalizovati na vrednosti staticke promenljive Porudzbina.LAST_ID
+		-	Inicijalizovati ostale atribute. Atribut _stavke treba da bude prazan niz.
+
+	
+	-	Getera i setera za sva atribute.
+	
+	-	Metode cenaPorudzbine:		
+		-	Metoda racuna cenu porudzbine. 
+			Cena porudzbine se racuna kao zbir cena pomnozenih sa odgovarajucim kolicinama.
+	
+U fajlu Restoran.ts implementirati klasu Restoran:
+	
+	-	Restoran se sastoji od atributa:
+		
+		private _naziv: string;
+		private _jelovnik: StavkaJelovnika[];
+		private _porudzbine: Porudzbina[];
+	
+	
+	-	Statickih promenljivih:
+		
+		static readonly BODOVI_PO_TIPU = {"Predjelo": 1, "Glavno jelo": 3, "Desert": 1};
+		static readonly BODOVI_ZA_GOLD = 10;
+		
+		Kljucna rec "readonly" obelezava da tu staticku promenljivu zelimo da samo citamo a ne da i pisemo (menjamo).
+		
+	
+	-	Konstruktora:
+		-	Konstruktor prima samo vrednost samo za atribut _naziv.
+		-	Inicijalizovati ostale atribute. Nizovi treba da budu iniciajlizovani na prazan niz.
+	
+	-	Metoda:
+		
+		-	dodajStavkuJelovnika
+			- 	kao parametar prima objekat tipa StavkaJelovnika
+			-	nema povratnu vrednost
+			Dodaje StavkaJelovnika u odgovarajuci niz (atribut klase).
+			Poziva metodu koja osvezava ispis stavki jelovnika na html stranici.
+		-	refreshJelovnik
+			-	nema parametre
+			-	nema povratnu vrednost
+			Metoda osvezava ispis stavki jelovnika na html stranici.
+			Za svaku stavku jelovnika u resotoranu se pravi list item <li> koji se 
+			upisuje u unordered listu <ul> sa id-jem "listajelovnik".
+			List itemi treba da imaju sledeci izgled:
+			
+				<li class="list-group-item list-group-item-action d-flex justify-content-between align-items-start" onclick="clickedMenu(1)">
+					<div class="ms-2 me-auto fw-bold">Pohovani šampinjoni u sosu od gorgonzole (530)</div>
+					<span class="badge bg-primary rounded-pill" id="spanJelovnik1"></span>
+				</li>
+				<li class="list-group-item list-group-item-action d-flex justify-content-between align-items-start" onclick="clickedMenu(2)">
+					<div class="ms-2 me-auto fw-bold">PITA sa piletinom i povrćem (680)</div>
+					<span class="badge bg-primary rounded-pill" id="spanJelovnik2"></span>
+				</li>
+				<li class="list-group-item list-group-item-action d-flex justify-content-between align-items-start" onclick="clickedMenu(3)">
+					<div class="ms-2 me-auto fw-bold">Bruskete sa paradajzom i bosiljkom (460)</div>
+					<span class="badge bg-primary rounded-pill" id="spanJelovnik3"></span>
+				</li>
+				
+		-	napraviPorudzbinu
+			-	prima dva parametra imeKlijenta tipa string i datum tipa Date
+			-	povratna vrednost je objekat porudzbine
+			Metoda pravi novi objekat tipa Porudzbina, dodaje ga u odgovarajuci niz restorana i vraca
+			kao rezultat izvrsenja metode.
+		-	getStavkaJelovnikaById
+			-	prima jedan parametar id tipa number
+			-	povratna vrednost je StavkaJelovnika
+			Metoda vraca objekat tipa StavkaJelovnika iz odgovarajuceg niza
+			ciji id je jedan prosledjenom vrednoscu. Ukoliko vrednost ne postoji
+			vraca null.
+			
+	-	Geteri i seteri za sve atribute
+	
+U fajlu app.ts
+
+	Postoje 4 globalne promenljive u ovom fajlu:
+		
+		let stavkeJelovnikaInit: any;
+		let porudzbineInit: any;
+		let otvorenaPorudzbina: Porudzbina = null;
+		let aktivanRestoran = new Restoran("Kod Raspevanog Italijana");
+
+	Promenljive stavkeJelovnikaInit i porudzbineInit su pomocne promenljive sa kojima 
+	se ucitavaju inicialni podaci definisani u podaci.js fajlu.
+	Podaci se ucitavaju uz pomoc ucitajPodatke funkcije implementirane na dnu fajla.
+	
+	
+	Promenljive otvorenaPorudzbina i aktivanRestoran sluze za interakciju korisnika sa stranicom.
+	Svaka nova porudzbina koju napravimo bice smestena u promenljivu otvorenaPorudzbina i dodata u aktivanRestoran.
+	
+
+	-	Implementirati funkciju otvoriPorudzbinu
+		-	 Kao parametar funkcija prima HTMLFormElement
+		Funkcija se poziva kao onsubmit dogadaj forme #unosForma. (Proveriti u HTML-u)
+		Funkcija preuzima imeKlijenta iz odgovarajuce html input elementa.
+		Preuzima trenutni datum i vreme tako sto se poziva konstruktor klase Date, tj. new Date();
+		Podaci se prosledjuju metodi napraviPorudzbinu koja nam vraca novu porudzbinu.
+		Vracenu porudzbinu dodeliti u globalnu promenljivu otvorenaPorudzbina.
+		
+		Nakon pravljena porudzbine popuniti odgovarajuce input polja (u divu sa id-jem otvorenaporudzbinadiv)
+		sa podacima iz porudzbine. I ukloniti atribut "hidden" sa metodom removeAttribute navedenog diva.
+		
+		Osveziti ispis jelovnika, prikazati jelovnik, izbrisati sadrzaj <p> taga sa id-jem "ispis".
+		Onemoguciti klik na dugme sa id-jem otvoribtn.
+		
+		return false; - spreciti submit dogadjaj forme.
+	
+	-	Implementirati funkciju clickedMenu
+		-	Kao parametar prima id StavkaJelovnika na koju je korisnik kliknuo.
+		Pronaci stavku jelovnika u aktivanRestoran-u.
+		Pronaci stavku porudzbine u otvorenojPorudzbini koja ima navedenu stavku.
+		(Ukoliko ne postoji navedena StavkaJelovnika kao deo StavkePorudzbine u otvorenojPorudzbini, napraviti novu stavku.)
+		Povecati kolicinu stavke porudzbine za 1 i u element sa id-jem "spanJelovnik${ID}" upisati novu kolicinu stavkePorudzbine.
+		(${ID} predstavlja id stavke jelovnika).
+		
+	-	Implementirati funkciju zatvoriPorudzbinu.
+		-	nema parametre
+		-	nema povratnu vrednost
+		
+		Krije html elemente sa id-jevima "otvorenaporudzbinadiv" i "jelovnikdiv" dodavanjem attributa hidden (setAttribute)
+		Menja status otvorenaPorudzbine u "Zatvorena"
+		Omogucava klik na dugme sa id-jem "otvoribtn"
+		U <p> sa id-jem ispis ispisuje racun za porudzbinu u sledecem formatu:
+		
+			Porudzbina broj: 9
+			Klijent: Aleksandar
+			Datum: Tue Sep 5 2023 21:59:25 GMT+0200 (Central European Summer Time)
+
+			Naručeno:
+			Pohovani šampinjoni u sosu od gorgonzole (530 x 2) ---- 1060
+			Karađorđeva šnicla (1250 x 1) ---- 1250
+			Krempita (410 x 1) ---- 410
+
+			Ukupna za naplatu: 2720
+			
+		Postavlja vrednost promenljive otvorenaPorudzbina na null.
+		
+	-	Implementirati funkciju otkaziPorudzbinu.
+		-	nema parametre
+		-	nema povratnu vrednost
+		
+		Menja status promenljive otkaziPorudzbinu na "Otkazana"
+		Krije, omogucava, i resetuje vrednost pormenljive kao i metoda zatvoriPorudzbinu.
+		Tj. radi isto kao i metoda zatvoriPorudzbinu osim ispisa racuna.
+		
+		
+U fajlu Restoran.ts implementirati klasu Restoran:
+	
+	Implementirati metodu:
+	
+	-	public zlatniKlijenti(): string
+	
+		Metoda vraca spisak GOLD klijenta restorana kao string:
+	
+			Spisak GOLD klijenata: <br>
+			Pera Peric sa 11 ukupno bodova. <br>
+		
+		GOLD klijenti su svi klijenti koji su u svojim porudzbinama sa statusom "Zatvorena" 
+		akumulirali broj bodova veci od staticke promenljive Restoran.BODOVI_ZA_GOLD.
+		Bodovi se racunaju tako sto se sumiraju bodovi na osnovu tipa StavkeJelovnika za svaku stavku 
+		(pomnozenu sa kolicinom) iz svake zatvorene porudzbine.
+		Bodovi za tip su dati u statickoj promenljivoj BODOVI_PO_TIPU.
+	
+		Npr. u primeru racuna iznad:
+	
+		Predjelo "Pohovani šampinjoni u sosu od gorgonzole" je naruceno dva puta -> 1 * 2 == 2 
+		Glavno jelo "Karađorđeva šnicla" je naruceno jednom -> 3 * 1 == 3
+		Desert "Krempita" je narucena jednom -> 1 * 1 == 1
+		Ukupno bodova za ovu porudzbinu klijent "Aleksandar" je 2 + 3 + 1 == 6
+		
+	-	najProfitabilnijiTipPoKlijentu(): string
+		
+		Metoda vraca spisak najprofitabilnijeg tipa jela po klijentu kao string:
+		
+			Pera Peric je najviše potrošio na tip "Glavno jelo" (3820) <br>
+			Mika Mikic je najviše potrošio na tip "Predjelo" (1280) <br>
+			Zika Zikic je najviše potrošio na tip "Glavno jelo" (2500) <br>
+			Petar Petrovic je najviše potrošio na tip "Predjelo" (460) <br>
+			Ljubo Ljubic je najviše potrošio na tip "Predjelo" (1060) <br>
+			
+		Za svakog klijenta, za svaku zatvorenu porudzbinu, se sumira koliko je potrosio
+		novca za svaki tip StavkeJelovnika. Nakon toga za svakog klijenta se odredjuje koji
+		tip ima maksimalnu vrednost i on se racuna kao najprofitabilnija za tog klijenta.
+		Npr. sa testinm podacima dobicemo sledece vrednosti: 
+		
+			{
+			   "Pera Peric":{
+				  "Predjelo":530,
+				  "Glavno jelo":3820,
+				  "Desert":1690
+			   },
+			   "Mika Mikic":{
+				  "Predjelo":1280
+			   },
+			   "Zika Zikic":{
+				  "Glavno jelo":2500,
+				  "Desert":910,
+				  "Predjelo":460
+			   },
+			   "Petar Petrovic":{
+				  "Predjelo":460
+			   },
+			   "Ljubo Ljubic":{
+				  "Predjelo":1060
+			   }
+			}
+		
+		Iz kojih mozemo da zakljucimo na koji tip su su klijenti najvise novca potrosili.
+		
+U fajlu app.ts
+	
+	-	Implementirati funkcije:
+		-	zlatniKlijenti
+			U <p> sa id-jem ispis upisuje rezultat metode zlatniKlijenti aktivnogRestorana
+		-	jelaPoKlijentu
+			U <p> sa id-jem ispis upisuje rezultat metode najProfitabilnijiTipPoKlijentu aktivnogRestorana
+		
+	
+		
+		
+			
+		
+				
+				
+			
+			
+			
+			
+	
+

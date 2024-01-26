@@ -1,0 +1,39 @@
+//Zadatak 11:
+// Napisati program za evidenciju namestaja u salonu namestaja.
+// Napisati klasu Namestaj, koja se sastoji od:
+// 	-privatnih atributa:
+// 		_sifra: number;
+// 		_naziv: string;
+// 		_jedinicnaCena: number;
+// 		_kolicinaUMagacinu: number;
+// 	-konstruktora sa parametrima
+// 	-get i set metoda za sve atribute
+// Napisati klasu Salon, koja se sastoji od:
+// 	-privatnih atributa:
+// 		_naziv: string;
+// 		_adresa: string;
+// 		_telefon: string;
+// 		_namestaji: Namestaj[]; //Niz Namestaja
+// 	-konstruktora: konstruktor treba da kao parametre prima naziv, adresu i telefon, dok se niz namestaja u konstruktoru postavlja na prazan niz;
+// 	-metoda:
+// 		-get i set metode za sve atribute
+// 		-ispisiNamestajNaStanju(): void - ova metoda ispisuje (console.log) sve komade namestaja (objekte iz niza _namestaji) cija kolcina u magacinu je veca od nule:
+// 										  primer formata ispisa: "1. 111 Ester Komoda 15 50386.5"
+// 										  (indeks + 1) + sifra + naziv + kolcina u magacinu + cena	
+// 		-dodajNaLager(sifra: number, kolicina: number): void - metoda kao parametre prima sifru komada namestaja i kolicinu,
+// 															   prolazi kroz niz namestaja i ukoliko pronadje namestaj cija je 
+// 															   sifra jednaka sifri dobijenoj kao parametar, metoda povecava
+// 															   atribut kolicinaUMagacinu pronadjenog objekta za vrednost parametra kolcina
+// 		-dodajNamestaj(namestaj: Namestaj): void - metoda kao parametar prima komad namestaja koji treba da doda u niz _namestaji,
+// 												   metoda pre dodavanja prolazi prvo kroz niz namestaja (obicna for petlja) i ukoliko pronadje komad namestaja
+// 												   cija je sifra jednaka sifri namestaja iz parametra, ispisuje se poruka o gresci i prekida se izvrsenje metode (return;) 
+// 												   A ukoliko se ne pronadje namestaj sa istom sifrom, novi komad namestaja dodaje u niz _namestaji.
+// 		-public prodajKomad(sifra: number, kolicina: number): void - metoda prima sifru i kolicinu namestaja koje zeli da proda.
+// 																	 Prvo se pronalazi komad namestaja sa navedenom sifrom, ukoliko ne postoji takav komad namestaja
+// 																	 ispisati poruku o gresci (console.log). Ukoliko postoji komad namestaja sa navedenom sifrom, ali nema
+// 																	 dovoljne kolicine namestaja u magacinu, ispisati poruku o neuspesnoj kupovini. A ukoliko ima dozvoljeno
+// 																	 komada namestaja u magacinu, u pronadjenom objektu smanjiti vrednost atributa kolicinaUMagacinu za vrednost
+// 																	 parametra kolicina i ispisati poruku o uspesnoj kupovini u sledecem formatu:
+// 																	 "Uspesno ste kupili 11 namestaja Ester Komoda za 554251.5RSD!"
+// 																	 kolicina + naziv + jedinicnaCena * kolicina.
+//# sourceMappingURL=app.js.map
