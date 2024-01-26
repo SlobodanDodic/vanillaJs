@@ -11,14 +11,6 @@ window.onload = function () {
   //TODO 1. b) Pozvati printWines metodu vinarije.
   vinarija.printWines();
 
-
-
-  vinarija.najstariji();
-
-
-
-
-
   //TODO 1. c) Dodati reakciju na submit dogadjaj frome sa id-jem unosForma
 
   document.getElementById("unosForma").addEventListener("submit", function (e) {
@@ -83,9 +75,13 @@ function wireEvents(): void {
       e.preventDefault();
       let forma = this as HTMLFormElement;
       let idVina = Number(((forma.id as unknown) as HTMLInputElement).value);
-      vinarija.get(idVina);
-      let vino = (vinarija.get(idVina))
-      console.log(vino)
+      // vinarija.get(idVina);
+      let vino = vinarija.get(idVina);
+
+      (document.getElementById("id") as HTMLInputElement).value = vino.id.toString();
+      (document.getElementById("name") as HTMLInputElement).value = vino.name;
+      (document.getElementById("description") as HTMLInputElement).value = vino.description;
+
       vinarija.update(vino);
 
       visibilityInput.style.visibility = "visible";

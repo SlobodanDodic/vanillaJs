@@ -198,9 +198,10 @@ var Vinarija = /** @class */ (function () {
         var out = "";
         for (var i = 0; i < this._spisakVina.length; i++) {
             var v = this._spisakVina[i];
-            out += "<tr>\n                    <td>".concat(v.id, "</td>\n                    <td>").concat(v.name, "</td>\n                    <td>").concat(v.grapes, "</td>\n                    <td>").concat(v.country, "</td>\n                    <td>").concat(v.region, "</td>\n                    <td>").concat(v.year, "</td>\n                    <td>\n                      <form class=\"row g-3 editForm\">\n                        <input type=\"text\" value=\"").concat(v.id, "\" name=\"id\" style=\"display: none;\">\n                        <div class=\"col-auto\">\n                          <button type=\"submit\" class=\"btn btn-primary mb-3\">Izmeni</button>\n                        </div>\n                      </form>\n                    </td>\n                    <td>\n                      <form class=\"row g-3 deleteForm\">\n                          <input type=\"text\" value=\"").concat(v.id, "\" name=\"id\" style=\"display: none;\">\n                          <div class=\"col-auto\">\n                              <button type=\"submit\" class=\"btn btn-primary mb-3\">Obri\u0161i</button>\n                          </div>\n                      </form>\n                    </td>\n                </tr>");
+            out += "<tr id=\"".concat(v.id, "\">\n                    <td>").concat(v.id, "</td>\n                    <td>").concat(v.name, "</td>\n                    <td>").concat(v.grapes, "</td>\n                    <td>").concat(v.country, "</td>\n                    <td>").concat(v.region, "</td>\n                    <td>").concat(v.year, "</td>\n                    <td>\n                      <form class=\"row g-3 editForm\">\n                        <input type=\"text\" value=\"").concat(v.id, "\" name=\"id\" style=\"display: none;\">\n                        <div class=\"col-auto\">\n                          <button type=\"submit\" class=\"btn btn-primary mb-3\">Izmeni</button>\n                        </div>\n                      </form>\n                    </td>\n                    <td>\n                      <form class=\"row g-3 deleteForm\">\n                          <input type=\"text\" value=\"").concat(v.id, "\" name=\"id\" style=\"display: none;\">\n                          <div class=\"col-auto\">\n                              <button type=\"submit\" class=\"btn btn-primary mb-3\">Obri\u0161i</button>\n                          </div>\n                      </form>\n                    </td>\n                </tr>");
         }
         document.getElementById("prikaz").innerHTML = out;
+        vinarija.najstariji();
     };
     // TODO 1. f) Implementirati metodu najstariji.
     Vinarija.prototype.najstariji = function () {
@@ -211,7 +212,13 @@ var Vinarija = /** @class */ (function () {
                 oldestWine[obj.country] = obj;
             }
         }
-        console.log(oldestWine);
+        for (var key in oldestWine) {
+            var id = oldestWine[key].id;
+            var oldest = document.getElementById("".concat(id)).children[1];
+            if (oldest) {
+                oldest.style.backgroundColor = "#FFD700";
+            }
+        }
     };
     return Vinarija;
 }());
@@ -273,7 +280,6 @@ evaluiraj(); //Provera CRUD funkcionalnosti funkcija na dnu.
 window.onload = function () {
     //TODO 1. b) Pozvati printWines metodu vinarije.
     vinarija.printWines();
-    vinarija.najstariji();
     //TODO 1. c) Dodati reakciju na submit dogadjaj frome sa id-jem unosForma
     document.getElementById("unosForma").addEventListener("submit", function (e) {
         e.preventDefault();
@@ -328,9 +334,11 @@ function wireEvents() {
             e.preventDefault();
             var forma = this;
             var idVina = Number(forma.id.value);
-            vinarija.get(idVina);
-            var vino = (vinarija.get(idVina));
-            console.log(vino);
+            // vinarija.get(idVina);
+            var vino = vinarija.get(idVina);
+            document.getElementById("id").value = vino.id.toString();
+            document.getElementById("name").value = vino.name;
+            document.getElementById("description").value = vino.description;
             vinarija.update(vino);
             visibilityInput.style.visibility = "visible";
             innerH1.textContent = "Izmena vina";

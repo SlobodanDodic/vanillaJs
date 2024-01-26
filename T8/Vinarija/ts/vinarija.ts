@@ -109,11 +109,13 @@ class Vinarija {
 
 
   public printWines(): void {
+
     //TODO 1. b) Implementirati metodu za prikaz svih vina kao redova tabele.
     let out = "";
     for (let i = 0; i < this._spisakVina.length; i++) {
+
       let v = this._spisakVina[i];
-      out += `<tr>
+      out += `<tr id="${v.id}">
                     <td>${v.id}</td>
                     <td>${v.name}</td>
                     <td>${v.grapes}</td>
@@ -140,12 +142,14 @@ class Vinarija {
     }
 
     document.getElementById("prikaz").innerHTML = out;
+
+    vinarija.najstariji();
+
   }
 
   // TODO 1. f) Implementirati metodu najstariji.
 
   public najstariji(): void {
-
     const oldestWine = {};
 
     for (let i = 0; i < this._spisakVina.length; i++) {
@@ -155,7 +159,14 @@ class Vinarija {
       }
     }
 
-    console.log(oldestWine);
+    for (let key in oldestWine) {
+      let id = oldestWine[key].id;
+      let oldest = document.getElementById(`${id}`).children[1] as HTMLElement;
+
+      if (oldest) {
+        oldest.style.backgroundColor = "#FFD700";
+      }
+    }
   }
 
 }

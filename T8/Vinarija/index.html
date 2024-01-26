@@ -1,115 +1,116 @@
 <html>
 
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Vinarija</title>
-	<link href="bootstrap/5.3.2_dist_css_bootstrap.min.css" rel="stylesheet">
-	<script src="bootstrap/5.3.2_dist_js_bootstrap.bundle.min.js"></script>
-	<script src="js/podaci.js"></script>
-	<script src="js/app.js" defer></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vinarija</title>
+  <link href="bootstrap/5.3.2_dist_css_bootstrap.min.css" rel="stylesheet">
+  <script src="bootstrap/5.3.2_dist_js_bootstrap.bundle.min.js"></script>
+  <script src="js/podaci.js"></script>
+  <script src="js/app.js" defer></script>
 </head>
+
 <body>
-	<nav class="navbar navbar-expand-lg bg-body-tertiary">
-		<div class="container-fluid">
-			<a class="navbar-brand align-text-center" href="#">
-				<img src="pics/logo.png" alt="Logo" width="50" height="40" class="d-inline-block align-text-top">
-			</a>
-			<a class="navbar-brand align-text-center" href="#">
-				Vinarija
-			</a>
-			<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-				data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-				aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-					<li class="nav-item">
-						<a class="nav-link active" aria-current="page" href="#">Unos vina</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#prikazdiv">Prikaz vina</a>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</nav>
-	
-	<br/>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand align-text-center" href="#">
+        <img src="pics/logo.png" alt="Logo" width="50" height="40" class="d-inline-block align-text-top">
+      </a>
+      <a class="navbar-brand align-text-center" href="#">
+        Vinarija
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Unos vina</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#prikazdiv">Prikaz vina</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-	<div class="row">
-		<div class="d-flex justify-content-center">
-			<h1 id="header">Unos vina</h1>
-		</div>
-	</div>
-	<div class="container">
-		<div class="offset-md-3 col-md-6">
-			<form id="unosForma">
-				<div class="mb-3">
-					<input type="text" class="form-control" id="id" name="id" style="visibility: hidden;" disabled>
-				</div>
-				<div class="mb-3">
-					<label for="name" class="form-label">Naziv</label>
-					<input type="text" class="form-control" id="name" name="name">
-				</div>
-				<div class="mb-3">
-					<label for="description" class="form-label">Opis</label>
-					<textarea type="text" class="form-control" id="description" name="description"></textarea>
-				</div>
-				<div class="mb-3">
-					<label for="grapes" class="form-label">Grožđe</label>
-					<input type="text" class="form-control" id="grapes" name="grapes">
-				</div>
-				<div class="mb-3">
-					<label for="country" class="form-label">Država</label>
-					<input type="text" class="form-control" id="country" name="country">
-				</div>
-				<div class="mb-3">
-					<label for="region" class="form-label">Region</label>
-					<input type="text" class="form-control" id="region" name="region">
-				</div>
-				<div class="mb-3">
-					<label for="year" class="form-label">Godina berbe</label>
-					<input type="number" class="form-control" id="year" name="year">
-				</div>
-				<div class="mb-3">
-					<label for="picture" class="form-label">Slika</label>
-					<input type="text" class="form-control" id="picture" name="picture">
-				</div>
+  <br />
 
-				<button type="submit" class="btn btn-primary">Sačuvaj</button>
-			</form>
-		</div>
-	
+  <div class="row">
+    <div class="d-flex justify-content-center">
+      <h1 id="header">Unos vina</h1>
+    </div>
+  </div>
+  <div class="container">
+    <div class="offset-md-3 col-md-6">
+      <form id="unosForma">
+        <div class="mb-3">
+          <input type="text" class="form-control" id="id" name="id" style="visibility: hidden;" disabled>
+        </div>
+        <div class="mb-3">
+          <label for="name" class="form-label">Naziv</label>
+          <input type="text" class="form-control" id="name" name="name">
+        </div>
+        <div class="mb-3">
+          <label for="description" class="form-label">Opis</label>
+          <textarea type="text" class="form-control" id="description" name="description"></textarea>
+        </div>
+        <div class="mb-3">
+          <label for="grapes" class="form-label">Grožđe</label>
+          <input type="text" class="form-control" id="grapes" name="grapes">
+        </div>
+        <div class="mb-3">
+          <label for="country" class="form-label">Država</label>
+          <input type="text" class="form-control" id="country" name="country">
+        </div>
+        <div class="mb-3">
+          <label for="region" class="form-label">Region</label>
+          <input type="text" class="form-control" id="region" name="region">
+        </div>
+        <div class="mb-3">
+          <label for="year" class="form-label">Godina berbe</label>
+          <input type="number" class="form-control" id="year" name="year">
+        </div>
+        <div class="mb-3">
+          <label for="picture" class="form-label">Slika</label>
+          <input type="text" class="form-control" id="picture" name="picture">
+        </div>
 
-	<br/>
-	<hr/>
+        <button type="submit" class="btn btn-primary">Sačuvaj</button>
+      </form>
+    </div>
 
-	<div class="offset-md-2 col-md-8" id="prikazdiv">
-		<table class="table" >
-			<thead>
-			  <tr>
-				<th scope="col">#</th>
-				<th scope="col">Naziv</th>
-				<th scope="col">Grožđe</th>
-				<th scope="col">Država</th>
-				<th scope="col">Region</th>
-				<th scope="col">Godina berbe</th>
-				<th scope="col">-</th>
-				<th scope="col">-</th>
-			  </tr>
-			</thead>
-			<tbody id="prikaz">
-			  
-			</tbody>
-		  </table>
-		  
-	</div>
 
-	<br/>
-	<hr/>
-	</div>
+    <br />
+    <hr />
+
+    <div class="offset-md-2 col-md-8" id="prikazdiv">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Naziv</th>
+            <th scope="col">Grožđe</th>
+            <th scope="col">Država</th>
+            <th scope="col">Region</th>
+            <th scope="col">Godina berbe</th>
+            <th scope="col">-</th>
+            <th scope="col">-</th>
+          </tr>
+        </thead>
+        <tbody id="prikaz">
+
+        </tbody>
+      </table>
+
+    </div>
+
+    <br />
+    <hr />
+  </div>
 
 </body>
+
 </html>
