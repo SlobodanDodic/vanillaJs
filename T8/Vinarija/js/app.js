@@ -201,60 +201,71 @@ var Vinarija = /** @class */ (function () {
             out += "<tr>\n                    <td>".concat(v.id, "</td>\n                    <td>").concat(v.name, "</td>\n                    <td>").concat(v.grapes, "</td>\n                    <td>").concat(v.country, "</td>\n                    <td>").concat(v.region, "</td>\n                    <td>").concat(v.year, "</td>\n                    <td>\n                      <form class=\"row g-3 editForm\">\n                        <input type=\"text\" value=\"").concat(v.id, "\" name=\"id\" style=\"display: none;\">\n                        <div class=\"col-auto\">\n                          <button type=\"submit\" class=\"btn btn-primary mb-3\">Izmeni</button>\n                        </div>\n                      </form>\n                    </td>\n                    <td>\n                      <form class=\"row g-3 deleteForm\">\n                          <input type=\"text\" value=\"").concat(v.id, "\" name=\"id\" style=\"display: none;\">\n                          <div class=\"col-auto\">\n                              <button type=\"submit\" class=\"btn btn-primary mb-3\">Obri\u0161i</button>\n                          </div>\n                      </form>\n                    </td>\n                </tr>");
         }
         document.getElementById("prikaz").innerHTML = out;
-        // Pokusaj koji je dugacak i zahteva dodatne implementacije:
-        // const tblBody = document.getElementById("prikaz");
-        // for (let i = 0; i < this._spisakVina.length; i++) {
-        //   const row = document.createElement("tr");
-        //   const cell1 = document.createElement("td");
-        //   const cell2 = document.createElement("td");
-        //   const cell3 = document.createElement("td");
-        //   const cell4 = document.createElement("td");
-        //   const cell5 = document.createElement("td");
-        //   const cell6 = document.createElement("td");
-        //   const cell7 = document.createElement("td");
-        //   const cell8 = document.createElement("td");
-        //   const cellId = document.createTextNode(`${this._spisakVina[i].id}`);
-        //   const cellName = document.createTextNode(`${this._spisakVina[i].name}`);
-        //   const cellGrapes = document.createTextNode(`${this._spisakVina[i].grapes}`);
-        //   const cellCountry = document.createTextNode(`${this._spisakVina[i].country}`);
-        //   const cellRegion = document.createTextNode(`${this._spisakVina[i].region}`);
-        //   const cellYear = document.createTextNode(`${this._spisakVina[i].year}`);
-        //   const deleteForm = document.createElement("form");
-        //   deleteForm.className = "row g-3 deleteForm";
-        //   const inputId = document.createElement("input");
-        //   inputId.type = "text";
-        //   inputId.value = `${this._spisakVina[i].id}`;
-        //   inputId.name = "id";
-        //   inputId.style.display = "none";
-        //   const colAuto = document.createElement("div");
-        //   colAuto.className = "col-auto";
-        //   const deleteBtn = document.createElement("button");
-        //   deleteBtn.type = "submit";
-        //   deleteBtn.className = "btn btn-primary mb-3";
-        //   deleteBtn.innerText = "Obriši";
-        //   colAuto.appendChild(deleteBtn);
-        //   deleteForm.appendChild(inputId);
-        //   deleteForm.appendChild(colAuto);
-        //   cell1.appendChild(cellId);
-        //   cell2.appendChild(cellName);
-        //   cell3.appendChild(cellGrapes);
-        //   cell4.appendChild(cellCountry);
-        //   cell5.appendChild(cellRegion);
-        //   cell6.appendChild(cellYear);
-        //   cell8.appendChild(deleteForm);
-        //   row.appendChild(cell1);
-        //   row.appendChild(cell2);
-        //   row.appendChild(cell3);
-        //   row.appendChild(cell4);
-        //   row.appendChild(cell5);
-        //   row.appendChild(cell6);
-        //   row.appendChild(cell7);
-        //   row.appendChild(cell8);
-        //   tblBody.appendChild(row);
-        // }
+    };
+    // TODO 1. f) Implementirati metodu najstariji.
+    Vinarija.prototype.najstariji = function () {
+        var oldestWine = {};
+        for (var i = 0; i < this._spisakVina.length; i++) {
+            var obj = this._spisakVina[i];
+            if (!oldestWine[obj.country] || oldestWine[obj.country].year > obj.year) {
+                oldestWine[obj.country] = obj;
+            }
+        }
+        console.log(oldestWine);
     };
     return Vinarija;
 }());
+// Pokusaj koji je dugacak i zahteva dodatne implementacije:
+// const tblBody = document.getElementById("prikaz");
+// for (let i = 0; i < this._spisakVina.length; i++) {
+//   const row = document.createElement("tr");
+//   const cell1 = document.createElement("td");
+//   const cell2 = document.createElement("td");
+//   const cell3 = document.createElement("td");
+//   const cell4 = document.createElement("td");
+//   const cell5 = document.createElement("td");
+//   const cell6 = document.createElement("td");
+//   const cell7 = document.createElement("td");
+//   const cell8 = document.createElement("td");
+//   const cellId = document.createTextNode(`${this._spisakVina[i].id}`);
+//   const cellName = document.createTextNode(`${this._spisakVina[i].name}`);
+//   const cellGrapes = document.createTextNode(`${this._spisakVina[i].grapes}`);
+//   const cellCountry = document.createTextNode(`${this._spisakVina[i].country}`);
+//   const cellRegion = document.createTextNode(`${this._spisakVina[i].region}`);
+//   const cellYear = document.createTextNode(`${this._spisakVina[i].year}`);
+//   const deleteForm = document.createElement("form");
+//   deleteForm.className = "row g-3 deleteForm";
+//   const inputId = document.createElement("input");
+//   inputId.type = "text";
+//   inputId.value = `${this._spisakVina[i].id}`;
+//   inputId.name = "id";
+//   inputId.style.display = "none";
+//   const colAuto = document.createElement("div");
+//   colAuto.className = "col-auto";
+//   const deleteBtn = document.createElement("button");
+//   deleteBtn.type = "submit";
+//   deleteBtn.className = "btn btn-primary mb-3";
+//   deleteBtn.innerText = "Obriši";
+//   colAuto.appendChild(deleteBtn);
+//   deleteForm.appendChild(inputId);
+//   deleteForm.appendChild(colAuto);
+//   cell1.appendChild(cellId);
+//   cell2.appendChild(cellName);
+//   cell3.appendChild(cellGrapes);
+//   cell4.appendChild(cellCountry);
+//   cell5.appendChild(cellRegion);
+//   cell6.appendChild(cellYear);
+//   cell8.appendChild(deleteForm);
+//   row.appendChild(cell1);
+//   row.appendChild(cell2);
+//   row.appendChild(cell3);
+//   row.appendChild(cell4);
+//   row.appendChild(cell5);
+//   row.appendChild(cell6);
+//   row.appendChild(cell7);
+//   row.appendChild(cell8);
+//   tblBody.appendChild(row);
+// }
 /// <reference path="vinarija.ts" />
 var vina;
 var vinarija = new Vinarija(vina);
@@ -262,6 +273,7 @@ evaluiraj(); //Provera CRUD funkcionalnosti funkcija na dnu.
 window.onload = function () {
     //TODO 1. b) Pozvati printWines metodu vinarije.
     vinarija.printWines();
+    vinarija.najstariji();
     //TODO 1. c) Dodati reakciju na submit dogadjaj frome sa id-jem unosForma
     document.getElementById("unosForma").addEventListener("submit", function (e) {
         e.preventDefault();

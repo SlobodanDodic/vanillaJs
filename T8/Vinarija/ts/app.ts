@@ -11,6 +11,14 @@ window.onload = function () {
   //TODO 1. b) Pozvati printWines metodu vinarije.
   vinarija.printWines();
 
+
+
+  vinarija.najstariji();
+
+
+
+
+
   //TODO 1. c) Dodati reakciju na submit dogadjaj frome sa id-jem unosForma
 
   document.getElementById("unosForma").addEventListener("submit", function (e) {
