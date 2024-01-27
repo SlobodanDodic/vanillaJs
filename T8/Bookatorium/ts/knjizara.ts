@@ -148,6 +148,31 @@ class Knjizara {
     return `Najprofitabilnija knjiga je ${najprofitabilnijaKnjiga.name} sa ukupnim profitom od $${maxProfit}!`;
   }
 
+  public najprodavanijaKnjigaPoZanru(): string {
+    let najprodavanijeKnjigePoZanru = {};
+
+    for (let i = 0; i < this._spisakKnjiga.length; i++) {
+      let book = this._spisakKnjiga[i];
+
+      if (!najprodavanijeKnjigePoZanru[book.genre] || book.sold > najprodavanijeKnjigePoZanru[book.genre].sold) {
+        najprodavanijeKnjigePoZanru[book.genre] = {
+          imeKnjige: book.name,
+          brojProdatih: book.sold,
+        };
+      }
+    }
+
+    let result = '';
+
+    for (let genre in najprodavanijeKnjigePoZanru) {
+      let { imeKnjige, brojProdatih } = najprodavanijeKnjigePoZanru[genre];
+      result += `<b>${genre}</b>: Najprodavanija "${genre}" knjiga je ${imeKnjige} sa ukupno prodatih ${brojProdatih} knjiga.<br/>`;
+    }
+
+    return result;
+  }
+
+
 
 
 };

@@ -43,6 +43,14 @@ window.onload = function () {
 
   });
 
+  document.getElementById("bestsellers").addEventListener("click", function (e) {
+    e.preventDefault();
+    let najprodavanijaKnjigaPoZanru = knjizara.najprodavanijaKnjigaPoZanru();
+
+    (document.getElementById("sadrzaj") as HTMLInputElement).innerHTML = najprodavanijaKnjigaPoZanru;
+
+  });
+
   wireEvents();
 }
 

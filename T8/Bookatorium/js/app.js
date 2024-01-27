@@ -198,6 +198,24 @@ var Knjizara = /** @class */ (function () {
         }
         return "Najprofitabilnija knjiga je ".concat(najprofitabilnijaKnjiga.name, " sa ukupnim profitom od $").concat(maxProfit, "!");
     };
+    Knjizara.prototype.najprodavanijaKnjigaPoZanru = function () {
+        var najprodavanijeKnjigePoZanru = {};
+        for (var i = 0; i < this._spisakKnjiga.length; i++) {
+            var book = this._spisakKnjiga[i];
+            if (!najprodavanijeKnjigePoZanru[book.genre] || book.sold > najprodavanijeKnjigePoZanru[book.genre].sold) {
+                najprodavanijeKnjigePoZanru[book.genre] = {
+                    imeKnjige: book.name,
+                    brojProdatih: book.sold,
+                };
+            }
+        }
+        var result = '';
+        for (var genre in najprodavanijeKnjigePoZanru) {
+            var _a = najprodavanijeKnjigePoZanru[genre], imeKnjige = _a.imeKnjige, brojProdatih = _a.brojProdatih;
+            result += "<b>".concat(genre, "</b>: Najprodavanija \"").concat(genre, "\" knjiga je ").concat(imeKnjige, " sa ukupno prodatih ").concat(brojProdatih, " knjiga.<br/>");
+        }
+        return result;
+    };
     return Knjizara;
 }());
 ;
@@ -234,6 +252,11 @@ window.onload = function () {
         e.preventDefault();
         var najprofitabilnijaKnjiga = knjizara.najprofitabilnijaKnjiga();
         document.getElementById("sadrzaj").innerHTML = najprofitabilnijaKnjiga;
+    });
+    document.getElementById("bestsellers").addEventListener("click", function (e) {
+        e.preventDefault();
+        var najprodavanijaKnjigaPoZanru = knjizara.najprodavanijaKnjigaPoZanru();
+        document.getElementById("sadrzaj").innerHTML = najprodavanijaKnjigaPoZanru;
     });
     wireEvents();
 };
