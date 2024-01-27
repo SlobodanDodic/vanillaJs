@@ -1,0 +1,1 @@
+//TODO 3 Napisati klasu result
