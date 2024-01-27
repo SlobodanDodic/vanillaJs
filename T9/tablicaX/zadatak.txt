@@ -1,4 +1,5 @@
 Napisati aplikaciju za vezbanje tablice mnozenja. (Slika 1)
+
 U formu se unosi ime igraca, faktor sa kojim mnozimo i broj problem koji zelimo da resimo.
 Npr. ako unesemo faktor 6 i broj problema 6*3. Klikom na dugme Start Game ispisuju se problemi 6*1; 6*2; 6*3;
 kao posebnim parovi text labela + input polje (Slika 2), i omogucuje se Calculate Score dugme.
@@ -73,7 +74,8 @@ metoda updateScoreBoard u htmlElement sa id-jem socres upisuje <h2>Scoreboard</h
 
 
 Klikom na dugme StartGame pravi se novi objekat Player i uz pomoc Utility fajla se preuzima ime igraca, borj problema i faktor.
-Na osnovu tih podataka se pravi nova instanca klase Game i poziva metoda displayGame(). Klikom na dugme calculate poziva se metoda calculate objekta newGame.
+Na osnovu tih podataka se pravi nova instanca klase Game i poziva metoda displayGame(). 
+Klikom na dugme calculate poziva se metoda calculate objekta newGame.
 
 
 

@@ -3,6 +3,7 @@
 
 let newGame: Game;
 
+
 // TODO 4 implementirati reakciju na klik dugmeta StartGame
 
 
