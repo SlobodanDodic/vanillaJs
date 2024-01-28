@@ -67,10 +67,10 @@ Implementirati TODOove u odgovarajucim fajlovima
 
 Napraviti klasu Result koji sadrzi atribute: playerName: string; score: number; problemCount: number; factor: number;
 Napisati klasu Scoreboard:
-sadrzi privatno svojstvo results koje je niz rezultata
-metodu addResult koja dodaje rezultata
-metodu updateScoreBoard
-metoda updateScoreBoard u htmlElement sa id-jem socres upisuje <h2>Scoreboard</h2> i <h4> tagove koje prestavlaju konkretan ispis rezultata;
+-sadrzi privatno svojstvo results koje je niz rezultata
+-metodu addResult koja dodaje rezultata
+-metodu updateScoreBoard
+-metoda updateScoreBoard u htmlElement sa id-jem socres upisuje <h2>Scoreboard</h2> i <h4> tagove koje prestavlaju konkretan ispis rezultata;
 
 
 Klikom na dugme StartGame pravi se novi objekat Player i uz pomoc Utility fajla se preuzima ime igraca, borj problema i faktor.

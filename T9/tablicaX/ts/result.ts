@@ -2,6 +2,7 @@ class Result {
   private _playerName: string;
   private _score: number;
   private _problemCount: number;
+  private _factor: number;
 
   constructor(playerName: string, score: number, problemCount: number, factor: number) {
     this._playerName = playerName;
@@ -9,7 +10,6 @@ class Result {
     this._problemCount = problemCount;
     this._factor = factor;
   }
-  private _factor: number;
 
   public get playerName(): string {
     return this._playerName;

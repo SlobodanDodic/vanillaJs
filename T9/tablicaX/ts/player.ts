@@ -1,16 +1,16 @@
 /// <reference path="person.ts" />
 
 class Player extends Person {
-  private _hightScore: number;
+  private _highScore: number;
 
   constructor(name: string, highScore: number) {
     super(name);
 
-    this._hightScore = highScore;
+    this._highScore = highScore;
   }
 
   public formatName(): string {
-    return super.formatName() + this._hightScore;
+    return super.formatName() + this._highScore;
   }
 
 }

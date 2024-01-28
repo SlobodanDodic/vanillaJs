@@ -38,11 +38,11 @@ var Player = /** @class */ (function (_super) {
     __extends(Player, _super);
     function Player(name, highScore) {
         var _this = _super.call(this, name) || this;
-        _this._hightScore = highScore;
+        _this._highScore = highScore;
         return _this;
     }
     Player.prototype.formatName = function () {
-        return _super.prototype.formatName.call(this) + this._hightScore;
+        return _super.prototype.formatName.call(this) + this._highScore;
     };
     return Player;
 }(Person));
@@ -107,22 +107,21 @@ var Result = /** @class */ (function () {
 /// <reference path="result.ts" />
 var Scoreboard = /** @class */ (function () {
     function Scoreboard() {
+        this._result = [];
     }
-    // constructor(result:Result[]){
-    //   this._result = result;
-    // }
     Scoreboard.prototype.addResult = function (newResult) {
         this._result.push(newResult);
     };
     Scoreboard.prototype.updateScoreBoard = function () {
-        var scoreBoard = '';
-        for (var i = 1; i < this._result.length; i++) {
+        var scoreBoard = '<h2 class="form-group">Scoreboard</h2>';
+        console.log(this._result);
+        for (var i = 0; i < this._result.length; i++) {
             var r = this._result[i];
-            scoreBoard += "<h2 class=\"form-group\">Scoreboard</h2>";
             scoreBoard += "<h4 class=\"form-group\">".concat(r.playerName, " : ").concat(r.score, " / ").concat(r.problemCount, " for ").concat(r.factor, "</h4>");
         }
         var scoreElement = document.getElementById('game');
         scoreElement.innerHTML = scoreBoard;
+        console.log(scoreBoard);
     };
     return Scoreboard;
 }());
@@ -154,15 +153,51 @@ var Game = /** @class */ (function () {
     Game.prototype.calculateScore = function () {
         //TODO 5 Izracunati skor (proci kroz svako input polje sa idjem answer + i (answer1, answer2....))
         //I u vakom korak proveriti da li je i*fakotr == vrednosti polja answer
+        var answers = [];
+        for (var i = 1; i <= this.problemCount; i++) {
+            var inputId = document.getElementById("answer".concat(i));
+            var faktor = this.factor;
+            if (inputId.value && parseInt(inputId.value) === i * faktor) {
+                answers.push(1);
+            }
+            else {
+                answers.push(0);
+            }
+        }
         //TODO 6 napraviti objekat rezultata koji zadovoljva intrfejs results i dodati ga u 
         //this.scoreboard i pozvati updateScoreboared metodu
+        var score = answers.reduce(function (acc, val) { return acc + val; }, 0);
+        var result = new Result(this.player.name, score, this.problemCount, this.factor);
+        this.scoreboard.addResult(result);
+        this.scoreboard.updateScoreBoard();
+        console.log(result);
         //TODO 7 Onemogucti klik na calculate dugme
+        document.getElementById('calculate').setAttribute('disabled', 'true');
     };
     return Game;
 }());
 /// <reference path="player.ts" />
 /// <reference path="game.ts" />
 var newGame;
+console.log("Game initialized:", newGame);
 // TODO 4 implementirati reakciju na klik dugmeta StartGame
+document.getElementById("startGame").addEventListener("click", function () {
+    var playerName = Utility.getInputValue("playername");
+    var factor = parseInt(Utility.getInputValue("factor"), 10);
+    var problemCount = parseInt(Utility.getInputValue("problemCount"), 10);
+    var newPlayer = new Player(playerName, 0);
+    newGame = new Game(newPlayer, problemCount, factor);
+    newGame.displayGame();
+    console.log("Game after setup:", newGame);
+});
 // TODO  implementirati reakciju na klik dugmeta Calculate
+document.getElementById("calculate").addEventListener("click", function () {
+    console.log("Game obj from calculate fn:", newGame);
+    if (newGame) {
+        newGame.calculateScore();
+    }
+    else {
+        console.error("Game not initialized!");
+    }
+});
 //# sourceMappingURL=app.js.map
