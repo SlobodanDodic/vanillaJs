@@ -1,1 +1,3 @@
-//TODO 3 Napisati interfejs result
+interface Result {
+
+}

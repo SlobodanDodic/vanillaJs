@@ -32,7 +32,7 @@ console.log(d.plata.toFixed(2));
 // Zadatak 3:
 
 // Napisati funkciju koja pronalazi srednju vrednost godina svih radnika. 
-let obj = [];
+let obj: Radnik[] = [];
 obj.push(t);
 obj.push(i);
 obj.push(d);
