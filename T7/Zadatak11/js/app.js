@@ -1,39 +1,167 @@
-//Zadatak 11:
-// Napisati program za evidenciju namestaja u salonu namestaja.
-// Napisati klasu Namestaj, koja se sastoji od:
-// 	-privatnih atributa:
-// 		_sifra: number;
-// 		_naziv: string;
-// 		_jedinicnaCena: number;
-// 		_kolicinaUMagacinu: number;
-// 	-konstruktora sa parametrima
-// 	-get i set metoda za sve atribute
-// Napisati klasu Salon, koja se sastoji od:
-// 	-privatnih atributa:
-// 		_naziv: string;
-// 		_adresa: string;
-// 		_telefon: string;
-// 		_namestaji: Namestaj[]; //Niz Namestaja
-// 	-konstruktora: konstruktor treba da kao parametre prima naziv, adresu i telefon, dok se niz namestaja u konstruktoru postavlja na prazan niz;
-// 	-metoda:
-// 		-get i set metode za sve atribute
-// 		-ispisiNamestajNaStanju(): void - ova metoda ispisuje (console.log) sve komade namestaja (objekte iz niza _namestaji) cija kolcina u magacinu je veca od nule:
-// 										  primer formata ispisa: "1. 111 Ester Komoda 15 50386.5"
-// 										  (indeks + 1) + sifra + naziv + kolcina u magacinu + cena	
-// 		-dodajNaLager(sifra: number, kolicina: number): void - metoda kao parametre prima sifru komada namestaja i kolicinu,
-// 															   prolazi kroz niz namestaja i ukoliko pronadje namestaj cija je 
-// 															   sifra jednaka sifri dobijenoj kao parametar, metoda povecava
-// 															   atribut kolicinaUMagacinu pronadjenog objekta za vrednost parametra kolcina
-// 		-dodajNamestaj(namestaj: Namestaj): void - metoda kao parametar prima komad namestaja koji treba da doda u niz _namestaji,
-// 												   metoda pre dodavanja prolazi prvo kroz niz namestaja (obicna for petlja) i ukoliko pronadje komad namestaja
-// 												   cija je sifra jednaka sifri namestaja iz parametra, ispisuje se poruka o gresci i prekida se izvrsenje metode (return;) 
-// 												   A ukoliko se ne pronadje namestaj sa istom sifrom, novi komad namestaja dodaje u niz _namestaji.
-// 		-public prodajKomad(sifra: number, kolicina: number): void - metoda prima sifru i kolicinu namestaja koje zeli da proda.
-// 																	 Prvo se pronalazi komad namestaja sa navedenom sifrom, ukoliko ne postoji takav komad namestaja
-// 																	 ispisati poruku o gresci (console.log). Ukoliko postoji komad namestaja sa navedenom sifrom, ali nema
-// 																	 dovoljne kolicine namestaja u magacinu, ispisati poruku o neuspesnoj kupovini. A ukoliko ima dozvoljeno
-// 																	 komada namestaja u magacinu, u pronadjenom objektu smanjiti vrednost atributa kolicinaUMagacinu za vrednost
-// 																	 parametra kolicina i ispisati poruku o uspesnoj kupovini u sledecem formatu:
-// 																	 "Uspesno ste kupili 11 namestaja Ester Komoda za 554251.5RSD!"
-// 																	 kolicina + naziv + jedinicnaCena * kolicina.
+var Namestaj = /** @class */ (function () {
+    function Namestaj(sifra, naziv, jedinicnaCena, kolicinaUMagacinu) {
+        this._sifra = sifra;
+        this._naziv = naziv;
+        this._jedinicnaCena = jedinicnaCena;
+        this._kolicinaUMagacinu = kolicinaUMagacinu;
+    }
+    Object.defineProperty(Namestaj.prototype, "sifra", {
+        // Getters:
+        get: function () {
+            return this._sifra;
+        },
+        // Setters:
+        set: function (value) {
+            this._sifra = value;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(Namestaj.prototype, "naziv", {
+        get: function () {
+            return this._naziv;
+        },
+        set: function (value) {
+            this._naziv = value;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(Namestaj.prototype, "jedinicnaCena", {
+        get: function () {
+            return this._jedinicnaCena;
+        },
+        set: function (value) {
+            this._jedinicnaCena = value;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(Namestaj.prototype, "kolicinaUMagacinu", {
+        get: function () {
+            return this._kolicinaUMagacinu;
+        },
+        set: function (value) {
+            this._kolicinaUMagacinu = value;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    return Namestaj;
+}());
+var Salon = /** @class */ (function () {
+    function Salon(naziv, adresa, telefon) {
+        this._naziv = naziv;
+        this._adresa = adresa;
+        this._telefon = telefon;
+        this._namestaj = [];
+    }
+    Object.defineProperty(Salon.prototype, "naziv", {
+        // Getters:
+        get: function () {
+            return this._naziv;
+        },
+        // Setters:
+        set: function (value) {
+            this._naziv = value;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(Salon.prototype, "adresa", {
+        get: function () {
+            return this._adresa;
+        },
+        set: function (value) {
+            this._adresa = value;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(Salon.prototype, "telefon", {
+        get: function () {
+            return this._telefon;
+        },
+        set: function (value) {
+            this._telefon = value;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(Salon.prototype, "namestaj", {
+        get: function () {
+            return this._namestaj;
+        },
+        set: function (value) {
+            this._namestaj = value;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Salon.prototype.ispisiNamestajNaStanju = function () {
+        for (var i = 0; i < this.namestaj.length; i++) {
+            if (this.namestaj[i].kolicinaUMagacinu > 0) {
+                console.log("".concat(i + 1, " ").concat(this.namestaj[i].sifra, ". ").concat(this.namestaj[i].naziv, " ").concat(this.namestaj[i].kolicinaUMagacinu, " ").concat(this.namestaj[i].jedinicnaCena));
+            }
+        }
+    };
+    Salon.prototype.dodajNaLager = function (sifra, kolicina) {
+        for (var i = 0; i < this.namestaj.length; i++) {
+            if (this.namestaj[i].sifra === sifra) {
+                this.namestaj[i].kolicinaUMagacinu += kolicina;
+            }
+        }
+    };
+    Salon.prototype.dodajNamestaj = function (namestaj) {
+        for (var i = 0; i < this.namestaj.length; i++) {
+            if (this.namestaj[i].sifra === namestaj.sifra) {
+                console.log("Vec postoji namestaj sa tom siform!");
+                console.log("Dodavanje nije uspesno!");
+                return;
+            }
+            else {
+                this.namestaj.push(namestaj);
+            }
+        }
+    };
+    Salon.prototype.prodajKomad = function (sifra, kolicina) {
+        for (var i = 0; i < this._namestaj.length; i++) {
+            if (this._namestaj[i].sifra == sifra) {
+                if (this.namestaj[i].kolicinaUMagacinu <= kolicina) {
+                    console.log("Prodaja nije uspesna! Nema dovoljno komada namestaja u magacinu!");
+                    return;
+                }
+                else {
+                    this._namestaj[i].kolicinaUMagacinu -= kolicina;
+                    console.log("Uspesno ste kupili " +
+                        kolicina +
+                        " namestaja " +
+                        this._namestaj[i].naziv +
+                        " za " +
+                        kolicina * this._namestaj[i].jedinicnaCena +
+                        "RSD!");
+                    return;
+                }
+            }
+        }
+        console.log("Ne postoji namestaj sa tom sifrom!");
+    };
+    return Salon;
+}());
+var n1 = new Namestaj(111, "Ester Komoda", 50386.5, 15);
+var n2 = new Namestaj(123, "Rita Lezaj", 41127.12, 5);
+var n3 = new Namestaj(143, "Fiona Lezaj", 41127.12, 0);
+var n4 = new Namestaj(144, "Kloe Klub Sto", 20241, 2);
+var s = new Salon("Simpo", "Bulevar Oslobodjenja BB", "021/000111");
+s.namestaj = [n1, n2, n3, n4];
+s.ispisiNamestajNaStanju();
+s.dodajNaLager(3, 144);
+s.ispisiNamestajNaStanju();
+var n5 = new Namestaj(254, "Fira Klub Sto", 30360.83, 11);
+s.dodajNamestaj(n5);
+n5.sifra = 5;
+s.dodajNamestaj(n5);
+s.prodajKomad(111, 20);
+s.prodajKomad(111, 11);
+s.ispisiNamestajNaStanju();
 //# sourceMappingURL=app.js.map
