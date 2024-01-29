@@ -18,4 +18,50 @@
 // Drugi moguci pristup je da iskorisitmo ASCII tabelu:
 // - svako slovo u ASCII tabeli ima svoj kod u dekadnom sistemu npr. za karakter "A" njegov ASCII kod je 65. 
 // - Uz pomoc metode String.fromCharCode() mozemo na osnovu koda 65 da dobijemo karakter "A".
+var roboti = [];
+var Robot = /** @class */ (function () {
+    function Robot() {
+    }
+    Robot.prototype.pozdrav = function () {
+        document.write("Zdravo ja sam robot: ".concat(this.ime, "<br/>"));
+    };
+    Robot.prototype.reset = function () {
+        this.ime = "";
+    };
+    return Robot;
+}());
+function izaberiIme() {
+    var slova = "ABCDEFGHIJKLMNOPQRSTUVXYWZ";
+    var redukovaniNiz;
+    var ime = "";
+    do { //Do while izvrsava telo petlje bar jednom
+        //Izdvajamo nasumice indekse slova iz stringa slova
+        //Math.random() nam vraca broj na intervalu od 0 do 1 broj na intervalu od 0 do 1 puta 28 = broj na intervalu od 0 do 28
+        //Math.floor elimise decimale
+        var prviIndeks = Math.floor(Math.random() * slova.length);
+        var drugiIndeks = Math.floor(Math.random() * slova.length);
+        var s1 = slova.charAt(prviIndeks);
+        var s2 = slova.charAt(drugiIndeks);
+        var cifre = Math.floor(Math.random() * 1000); //Nasumican trocifreni broj je broj na intervalu od 0 do 1 puta 1000
+        if (cifre < 100) //Ukoliko je Math.random vratio br poput: 0.01 mnozenje sa 1000 vraca dvocifreni broj ( br + 100 nam daje trocifreni br)
+            cifre += 100;
+        ime = s1 + s2 + cifre;
+        //redukovaniNiz = roboti.filter((elem) => elem.ime == ime); 
+        redukovaniNiz = [];
+        for (var i = 0; i < roboti.length; i++) {
+            if (roboti[i].ime == ime) {
+                redukovaniNiz.push(roboti[i]);
+            }
+        }
+        //Proveravamo da li postoji robot sa nasumice izabranim imenom u nizu robota, ukoliko ne rezultat ce biti prazan niz [] ciji length je 0
+    } while (redukovaniNiz.length != 0);
+    return ime;
+}
+var numberOfRobots = 10;
+for (var i = 0; i < numberOfRobots; i++) {
+    var robot = new Robot();
+    robot.ime = izaberiIme();
+    roboti.push(robot);
+    robot.pozdrav();
+}
 //# sourceMappingURL=app.js.map
