@@ -9,9 +9,9 @@
 // Kreirati posebnu Kennel klasu. Kennel klasa ima naziv, adresu, i niz Pasa.
 // Napisati konstruktor koji kao parametre prima samo naziv i adresu.
 // Implementirati getere i setere, kao i metodu za dodavanje pasa u niz.
-// Prilikom testiranja u taj niz dodati barem 7 pasa. 
+// Prilikom testiranja u taj niz dodati barem 7 pasa.
 
-// Implementirati metode koje omogucuju sledece funkcionalnosti: 
+// Implementirati metode koje omogucuju sledece funkcionalnosti:
 // 	-pronaći najstarijeg psa
 // 	-pronaci najmladjeg psa
 // 	-ispisati imena vakcinisanih pasa.
@@ -62,7 +62,7 @@ class Pas {
   }
 
   public vakcinacija() {
-    return this._vakcinisan = true;
+    return (this._vakcinisan = true);
   }
 
   public starostLjudskeGodine() {
@@ -70,9 +70,8 @@ class Pas {
   }
 
   public ispisPodataka(_ime: string, _starost: number, _rasa: string, _vakcinisan: boolean = false) {
-    return `Ime: ${_ime}, starost: ${_starost}, rasa: ${_rasa}, vakcinisan: ${_vakcinisan}`
+    return `Ime: ${_ime}, starost: ${_starost}, rasa: ${_rasa}, vakcinisan: ${_vakcinisan}`;
   }
-
 }
 
 class Kennel {
@@ -105,26 +104,46 @@ class Kennel {
     this._nizPasa.push(pas);
   }
 
-  public pronađiNajstarijegPsa(): Pas {
-    let najstarijiPas: Pas | null = null;
+  // public pronađiNajstarijegPsa(): Pas {
+  //   let najstarijiPas: Pas | null = null;
 
-    for (let pas of this._nizPasa) {
+  //   for (let pas of this._nizPasa) {
+  //     if (!najstarijiPas || pas.starost > najstarijiPas.starost) {
+  //       najstarijiPas = pas;
+  //     }
+  //   }
+  //   return najstarijiPas!;
+  // }
+
+  public pronađiNajstarijegPsa(): Pas {
+    return this._nizPasa.reduce((najstarijiPas: Pas | null, pas: Pas) => {
       if (!najstarijiPas || pas.starost > najstarijiPas.starost) {
-        najstarijiPas = pas;
+        return pas;
+      } else {
+        return najstarijiPas;
       }
-    }
-    return najstarijiPas!;
+    }, this._nizPasa[0]!);
   }
 
-  public pronađiNajmlađegPsa(): Pas {
-    let najmlađiPas: Pas | null = null;
+  // public pronađiNajmlađegPsa(): Pas {
+  //   let najmlađiPas: Pas | null = null;
 
-    for (let pas of this._nizPasa) {
+  //   for (let pas of this._nizPasa) {
+  //     if (!najmlađiPas || pas.starost < najmlađiPas.starost) {
+  //       najmlađiPas = pas;
+  //     }
+  //   }
+  //   return najmlađiPas!;
+  // }
+
+  public pronađiNajmlađegPsa(): Pas {
+    return this._nizPasa.reduce((najmlađiPas: Pas | null, pas: Pas) => {
       if (!najmlađiPas || pas.starost < najmlađiPas.starost) {
-        najmlađiPas = pas;
+        return pas;
+      } else {
+        return najmlađiPas;
       }
-    }
-    return najmlađiPas!;
+    }, this._nizPasa[0]!);
   }
 
   public ispisiVakcinisanePse(): string[] {
@@ -171,4 +190,4 @@ kennel.dodajPsa(pas7);
 console.log("Najstariji pas:", kennel.pronađiNajstarijegPsa().ime);
 console.log("Najmlađi pas:", kennel.pronađiNajmlađegPsa().ime);
 console.log("Imena vakcinisanih pasa:", kennel.ispisiVakcinisanePse());
-console.log(kennel.naziv + " - " + kennel.adresa)
+console.log(kennel.naziv + " - " + kennel.adresa);

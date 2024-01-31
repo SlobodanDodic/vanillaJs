@@ -105,46 +105,74 @@ var Salon = /** @class */ (function () {
             }
         }
     };
+    // public dodajNaLager(sifra: number, kolicina: number): void {
+    //   for (let i = 0; i < this.namestaj.length; i++) {
+    //     if (this.namestaj[i].sifra === sifra) {
+    //       this.namestaj[i].kolicinaUMagacinu += kolicina;
+    //     }
+    //   }
+    // }
     Salon.prototype.dodajNaLager = function (sifra, kolicina) {
-        for (var i = 0; i < this.namestaj.length; i++) {
-            if (this.namestaj[i].sifra === sifra) {
-                this.namestaj[i].kolicinaUMagacinu += kolicina;
-            }
-        }
+        this.namestaj.filter(function (obj) { return obj.sifra === sifra; }).forEach(function (obj) { return (obj.kolicinaUMagacinu += kolicina); });
     };
+    // public dodajNamestaj(namestaj: Namestaj): void {
+    //   for (let i = 0; i < this.namestaj.length; i++) {
+    //     if (this.namestaj[i].sifra === namestaj.sifra) {
+    //       console.log("Vec postoji namestaj sa tom siform!");
+    //       console.log("Dodavanje nije uspesno!");
+    //       return;
+    //     } else {
+    //       this.namestaj.push(namestaj);
+    //     }
+    //   }
+    // }
     Salon.prototype.dodajNamestaj = function (namestaj) {
-        for (var i = 0; i < this.namestaj.length; i++) {
-            if (this.namestaj[i].sifra === namestaj.sifra) {
-                console.log("Vec postoji namestaj sa tom siform!");
-                console.log("Dodavanje nije uspesno!");
-                return;
-            }
-            else {
-                this.namestaj.push(namestaj);
-            }
+        var exist = this.namestaj.filter(function (obj) { return obj.sifra === namestaj.sifra; });
+        if (exist.length > 0) {
+            console.log("Već postoji nameštaj sa tom šifrom:", exist);
+            return;
+        }
+        else {
+            this.namestaj.push(namestaj);
+            console.log("Nameštaj uspešno dodat:", namestaj);
         }
     };
+    //   public prodajKomad(sifra: number, kolicina: number): void {
+    //     for (let i = 0; i < this._namestaj.length; i++) {
+    //       if (this._namestaj[i].sifra == sifra) {
+    //         if (this.namestaj[i].kolicinaUMagacinu <= kolicina) {
+    //           console.log("Prodaja nije uspesna! Nema dovoljno komada namestaja u magacinu!");
+    //           return;
+    //         } else {
+    //           this._namestaj[i].kolicinaUMagacinu -= kolicina;
+    //           console.log(
+    //             "Uspesno ste kupili " +
+    //               kolicina +
+    //               " namestaja " +
+    //               this._namestaj[i].naziv +
+    //               " za " +
+    //               kolicina * this._namestaj[i].jedinicnaCena +
+    //               "RSD!"
+    //           );
+    //           return;
+    //         }
+    //       }
+    //     }
+    //     console.log("Ne postoji namestaj sa tom sifrom!");
+    //   }
+    // }
     Salon.prototype.prodajKomad = function (sifra, kolicina) {
-        for (var i = 0; i < this._namestaj.length; i++) {
-            if (this._namestaj[i].sifra == sifra) {
-                if (this.namestaj[i].kolicinaUMagacinu <= kolicina) {
-                    console.log("Prodaja nije uspesna! Nema dovoljno komada namestaja u magacinu!");
-                    return;
-                }
-                else {
-                    this._namestaj[i].kolicinaUMagacinu -= kolicina;
-                    console.log("Uspesno ste kupili " +
-                        kolicina +
-                        " namestaja " +
-                        this._namestaj[i].naziv +
-                        " za " +
-                        kolicina * this._namestaj[i].jedinicnaCena +
-                        "RSD!");
-                    return;
-                }
-            }
+        var pronadjeniNamestaji = this.namestaj.filter(function (obj) { return obj.sifra === sifra; });
+        if (pronadjeniNamestaji.length === 0) {
+            console.log("Ne postoji nameštaj sa tom šifrom!");
+            return;
         }
-        console.log("Ne postoji namestaj sa tom sifrom!");
+        if (pronadjeniNamestaji[0].kolicinaUMagacinu < kolicina) {
+            console.log("Prodaja nije uspešna! Nema dovoljno komada nameštaja u magacinu!");
+            return;
+        }
+        pronadjeniNamestaji[0].kolicinaUMagacinu -= kolicina;
+        console.log("Uspesno ste kupili ".concat(kolicina, " komada name\u0161taja ").concat(pronadjeniNamestaji[0].naziv, " za ").concat(kolicina * pronadjeniNamestaji[0].jedinicnaCena, " RSD"));
     };
     return Salon;
 }());
