@@ -1,0 +1,200 @@
+1. Za zadati niz brojeva, uz pomoc map funkcije, napraviti niz kvadratnih korena tih brojeva.
+	input: [1, 2, 3, 4, 5]
+	output: [1, 1.4142135623730951, 1.7320508075688772, 2, 2.23606797749979]
+
+2. Pomnoziti sve vrednosti niza pomocu reduce funkcije.
+	input: [2, 3, 4]
+	output: 24
+
+3. Konkatenirati stringove niza pomocu reduce funkcije.
+	input: ['x','y','z']
+ 	output: 'xyz'
+
+4. Napisati funkciju koja prima niz imena i vraca cestitku (koristiti reduce kao deo funkcije).
+	input: ['Steve', 'Sally', 'George', 'Gina']
+	output: 'Congratulations Steve, Sally, George, Gina!'
+
+5. Iskorititi map funkciju za transformisanje niza items na niz stringova koji sadrzi samo name predmeta.
+	input: var items = [ { name: 'ball', points: 2 },
+						 { name: 'coin', points: 3 },
+						 { name: 'candy', points: 4} ];
+	
+	output: ["ball", "coin", "candy"]
+	
+	
+var vehicles = [
+  { make: 'Honda', model: 'CR-V', type: 'suv', price: 24045 },
+  { make: 'Honda', model: 'Accord', type: 'sedan', price: 22455 },
+  { make: 'Mazda', model: 'Mazda 6', type: 'sedan', price: 24195 },
+  { make: 'Mazda', model: 'CX-9', type: 'suv', price: 31520 },
+  { make: 'Toyota', model: '4Runner', type: 'suv', price: 34210 },
+  { make: 'Toyota', model: 'Sequoia', type: 'suv', price: 45560 },
+  { make: 'Toyota', model: 'Tacoma', type: 'truck', price: 24320 },
+  { make: 'Ford', model: 'F-150', type: 'truck', price: 27110 },
+  { make: 'Ford', model: 'Fusion', type: 'sedan', price: 22120 },
+  { make: 'Ford', model: 'Explorer', type: 'suv', price: 31660 }
+];
+
+6. Primeniti filter funkciju na nizu vehicles kako bi vratili niz vozila cija imena pocinju sa slovom 'C'.
+	input: vehicles
+	output: [ { make: 'Honda', model: 'CR-V', type: 'suv', price: 24045 },
+			  { make: 'Mazda', model: 'CX-9', type: 'suv', price: 31520 } ]
+
+7. Napisati funkciju koja prima dva parametra: niz stringova i upit (string). Funkcija treba da vrati novi niz
+   stringova ciji elementi sadrze upit u sebi kao podstring. Funkcija treba da bude case insensitive. Koristit
+   funkciju filter u implementaciji.
+	input niz: ['apple', 'banana', 'grapes', 'mango', 'orange']
+	input upit: "Ap" 
+	output: ['apple', 'grapes']
+ 
+8. Kombinovanjem funkcija filter, map i reduce izracunati prosecnu vrednost svih vozila koja su tipa 'suv'.
+	input: vehicles
+	output: 33399
+	
+
+9. Za dati niz brojeva:
+let n = [-21, -17, -3, -1, 2, 3, 5, 8, 9, 12, 14, 15];
+pronaci uz pomoc filter funkcije, sve brojeve koji su deljivi sa 3
+pronaci uz pomoc filter funkcije, sve parne pozitivne brojeve
+
+10. Za dati niz filmova, vartiti niz title-ova svih filmova ciji je rating veci od 8.5. Koristiti filter i map funkciju.
+let filmovi = [ 
+				{
+					id:19404,
+					original_title:"दिलवाले दुल्हनिया ले जायेंगे",
+					title:"Dilwale Dulhania Le Jayenge",
+					release_date:"1995-10-20",
+					rating:9.1
+				},
+				{
+					id:278,
+					original_title:"The Shawshank Redemption",
+					title:"The Shawshank Redemption",
+					release_date:"1994-09-23",
+					rating:8.6
+				},
+				{
+					id:238,
+					original_title:"The Godfather",
+					title:"The Godfather",
+					release_date:"1972-03-14",
+					rating:8.6
+				},
+				{
+					id:372058,
+					original_title:"君の名は。",
+					title:"Your Name.",
+					release_date:"2016-08-26",
+					rating:8.6
+				},
+				{
+					id:324857,
+					original_title:"Spider-Man: Into the Spider-Verse",
+					title:"Spider-Man: Into the Spider-Verse",
+					release_date:"2018-12-07",
+					rating:8.5
+				},
+				{
+					id:424,
+					original_title:"Schindler's List",
+					title:"Schindler's List",
+					release_date:"1993-12-15",
+					rating:8.5
+				},
+				{
+					id:240,
+					original_title:"The Godfather: Part II",
+					title:"The Godfather: Part II",
+					release_date:"1974-12-20",
+					rating:8.5
+				},
+				{
+					id:129,
+					original_title:"千と千尋の神隠し",
+					title:"Spirited Away",
+					release_date:"2001-07-20",
+					rating:8.5
+				},
+				{
+					id:497,
+					original_title:"The Green Mile",
+					title:"The Green Mile",
+					release_date:"1999-12-10",
+					rating:8.4
+				},
+				{
+					id:637,
+					original_title:"La vita è bella",
+					title:"Life Is Beautiful",
+					release_date:"1997-12-20",
+					rating:8.4
+				}];
+
+
+11. Za niz filmova iz zadatka 10, vratiti niz objekata koje sadrze samo title i release_date. Koristiti map funkciju.
+
+12. Za niz filmova iz zadatka 10, uz pomoc reduce funkcije, izracunati prosecan rating.
+
+13. Calculator (tekst se nalazi u vidu komentara u calculator.html i calculator.ts fajlovima)
+
+14. Dat je niz karti za igranje:
+
+let karte = [ {boja: "tref", broj: "4" }, 
+              {boja: "herc", broj: "4" }, 
+			  {boja: "tref", broj: "1" }, 
+			  {boja: "herc", broj: "J" }, 
+			  {boja: "herc", broj: "1" }, 
+			  {boja: "pik",  broj: "4" }, 
+			  {boja: "karo", broj: "Q" }, 
+			  {boja: "karo", broj: "9" }, 
+			  {boja: "herc", broj: "A" }, 
+			  {boja: "karo", broj: "9" }, 
+			  {boja: "tref", broj: "1" }, 
+			  {boja: "herc", broj: "1" } ]
+
+Uz pomoc reduce funkcije grupisati karte po boji tako da imamo objekat nizova:
+{
+  tref: [
+    { boja: 'tref', broj: '4' },
+    { boja: 'tref', broj: '1' },
+    { boja: 'tref', broj: '1' }
+  ],
+  herc: [
+    { boja: 'herc', broj: '4' },
+    { boja: 'herc', broj: 'J' },
+    { boja: 'herc', broj: '1' },
+    { boja: 'herc', broj: 'A' },
+    { boja: 'herc', broj: '1' }
+  ],
+  pik: [ { boja: 'pik', broj: '4' } ],
+  karo: [
+    { boja: 'karo', broj: 'Q' },
+    { boja: 'karo', broj: '9' },
+    { boja: 'karo', broj: '9' }
+  ]
+}
+
+15. Dat je niz nizova brojeva, uz pomoc reduce funkcije pretvoriti ga u niz brojeva (flatten).
+Resenje je moguce uz pomoc spread sintakse (...).
+
+let nizNizova = [[1, 2, 3], [4, 5], [6, 7, 8], [9], [10, 11]];
+
+output:
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+
+16. Za niz brojeva iz zadatka 1. ([1, 2, 3, 4, 5]) pronaci sumu kvadrata parnih brojeva.
+
+output: 20
+
+17. Dat je niz ocena studenata. Pronaci prosecnu ocenu studenata koji su polozili predmet.
+Student je polozio predmet ukoliko mu je ocena veca od 5.
+
+let studenti = [
+	{ ime: "Pera", ocena: 8 },
+	{ ime: "Mika", ocena: 5 },
+	{ ime: "Zika", ocena: 10 },
+	{ ime: "Marko", ocena: 4 },
+	{ ime: "Darko", ocena: 9 }
+  ];
+
+output: 9

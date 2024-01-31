@@ -1,0 +1,106 @@
+Vinarija:
+
+	a) U folderu 1. Vinarija implementirati:
+		-	Konstruktor kopije za Vino
+		-	CRUD operacije za Vinariju https://en.wikipedia.org/wiki/Create,_read,_update_and_delete#:~:text=In%20computer%20programming%2C%20create%2C%20read,computer%2Dbased%20forms%20and%20reports.
+	
+	b) Implementirati ispis vina iz vinarije:
+		- U okviru vinarije implementirati printWines() metodu.
+		-	Na index.html stranici nalazi se tabela sa 8 kolona. ID tbody taga te tabele je "prikaz".
+		-	Popuniti tbody tag tabele tako da svako vino je predstavljeno uz pomoc jednog reda u tabeli.
+		-	Za svako vino treba da se generise sledeci html sadrzaj i upise u tbody:
+		
+		<tr>
+			<td>1</td>
+			<td>CHATEAU DE SAINT COSME</td>
+			<td>Grenache / Syrah</td>
+			<td>France</td>
+			<td>Southern Rhone / Gigondas</td>
+			<td>2009</td>
+			<td></td>
+			<td></td>
+		</tr>
+		
+		-	Poslednja dva td-a ce biti popunjena u zadtku 1. d) i 1. e)
+		-	U okviru windows.onload (app.ts) pozvati metodu printWines vinarije.
+	
+	c)	Implementirati dodavanje novog vina.
+		-	U okviru window.onload dodati reakciju na submit dogadjaj forme sa id-jom "unosForma".
+		-	Spreciti defaultno ponasenje submit dogadjaja (pozvati "preventDefault" metodu nad event objektom).
+			Event objekat je prvi parametar koji prima callback funkcija koja se prosledjuje "addEventListener" metodi.
+		-	Pokupiti vrednosti svih input polja ukljucujuci i polje id koje je hidden.
+		-	Na osnovu vrednosti input polja napraviti objekat (uz pomoc objekat literala) da izgleda
+			kao objekti js/podaci.js fajlu.
+		-	Napravite instancu klase Vino na osnovu objekta. I dodati ga u vinariju sa odgovarajucom CRUD metodom.
+		-	Nakon dodavanja pozvati printWines metodu vinarije.
+	
+	d) Implementirati brisanje vina iz vinarije.
+		-	U printWines metodi prosirit ispis tako da poslednja kolona tabele u sebi sadrzi forme za brisanje.
+		-	Primer kako poslednja celija (td polje) treba da izgleda:
+		
+		<td>
+			<form class="row g-3 deleteForm">
+				<input type="text" value="1" name="id" style="display: none;">
+				<div class="col-auto">
+					<button type="submit" class="btn btn-primary mb-3">Obriši</button>
+				</div>
+			</form>
+		</td>
+		
+		- 	Jedina vrednost koja se menja u gore pomenutom html sadrzaju je value="1" je zapravo value=`${vino.id}`.
+			Odnosno id vina koje trenutno ispisujemo u printWines metodi.
+		-	Svako vino u vinariji (odnosno red u tabeli) ce imati formu koja u sebi sadrzi klasu "deleteForm".
+		-	U app.ts u okviru wireEvents metode implementirati za svaku "deleteForm"-u reakciju na submit dogadjaj.
+		-	Selektovati sve DOM elemente koji imaju klasu "deleteForm".
+		-	Svakom sleketovanom DOM elementu dodati reakciju na submit dogadjaj.
+		-	Spreciti defaultno ponasenje submit dogadjaja.
+		-	Preuzeti id forme (iskoristiti this, this u okviru reakcije na dogadjaj predstavlja 
+			DOM elemenat koji reaguje na taj dogadjaj, forma u ovom slucaju)
+		-	Pozvati CRUD metodu za brisanje elementa vinarije.
+		-	Pozvati printWines metodu.
+		-	Pozvati wireEvents funkciju u:
+			-	U okviru rekacije na submit dogadjaj "deletForm"-e.
+			-	U okviru rekacije na submit dogadjaj "unosForma"-e.
+			-	Na kraju window.onload-a.
+			(Zasto se ovo poziva i zasto je bitno da reakcija "unosForma"-e ne bude u wireEvents? Prodiskutovati sa predavacem.)
+	
+	e) Implementirati izmenu unetog vina iz vinarije.
+		-	U printWines metodi prosirit ispis tako da pretposlednja kolona tabele u sebi sadrzi forme za izmenu.
+		-	Primer kako pretposlednja celija (td polje) treba da izgleda:
+		
+		<td>
+			<form class="row g-3 editForm">
+				<input type="text" value="1" name="id" style="display: none;">
+				<div class="col-auto">
+					<button type="submit" class="btn btn-primary mb-3">Izmeni</button>
+				</div>
+			</form>
+		</td>
+		
+		-	Ponasanje je isto kao i "deletForm".
+		-	Svako vino u vinariji (odnosno red u tabeli) ce imati formu koja u sebi sadrzi klasu "editForm".
+		-	U app.ts u okviru wireEvents metode implementirati za svaku "editForm"-u reakciju na submit dogadjaj.
+		-	Selektovati sve DOM elemente koji imaju klasu "editForm".
+		-	Svakom sleketovanom DOM elementu dodati reakciju na submit dogadjaj.
+		-	Spreciti defaultno ponasenje submit dogadjaja.
+		-	Preuzeti id forme (iskoristiti this, this u okviru reakcije na dogadjaj predstavlja 
+			DOM elemenat koji reaguje na taj dogadjaj, forma u ovom slucaju)
+		-	Prezeti vino iz vinarije sa preuzetim id-om pozivom odgvarajuce CRUD metode.
+		-	Promeniti visibilty input elementa sa id-jem "id" na "visible".
+		-	Izmeniti inner text h1 taga sa id-jem "header" na "Izmena vina".
+		-	Postaviti vrednosti input polja da imaju vrednost iz preuzetog objekta vina.
+		-	Pozvati "focus" metodu nad DOM elementom sa id-jem "name".
+		-	Proziriti reakciju submit dogadjaja "unosForma"-e tako da:
+			-	Ukoliko input polje "id" nema vrednost vrsi se dodavanje novog vina.
+			-	Ukoliko input polje "id" ima vrednost vrsi se izmena postojeceg vina.
+			-	Nakon poziva CRUD metoda za izmenu/dodavanje postaviti vrednost svih input polja na prazan string "".
+			-	Postaviti vidljivnost polja sa id-jem "id" na hidden.
+			-	Izmeniti inner text h1 taga sa id-jem "header" na "Dodavanje vina".
+			
+	f)	U okviru vinarije napraviti metodu koja vraca objekat sa najstarijim vinima po drzavi. 
+		Svojstva objekta treba da budu drzave a vrednosti treba da budu vina (najstarija po drzavi).
+		
+	g)	Prosiriti printWines metodu tako da celija sa id-jem vina ima zlatnu pozadinsku boju (#FFD700) ukoliko je najstarije za drzavu.
+		-	Na pocetku printWines pozvati metodu iz 1. f) zadatka.
+		-	Prilikom ispisa vina proveriti da li je za tu drzavu to vino najstarije (id je jednak najstarijem vinu iz objekta najstarijih).
+		-	Ukoliko jeste dodati attribut style koji podesava boju tog td-a.

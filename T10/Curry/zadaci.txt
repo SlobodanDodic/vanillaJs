@@ -1,0 +1,55 @@
+//Opcionalno - Funkcionalno programiranje Curry i Function composition
+//Koristiti Ramda biblioteku http://ramdajs.com/
+
+1. Napisati curried funkciju "get" funkcija prima 2 parmetra property i object. Funkcija vraca: object[property]
+
+2. Napraviti curried funkciju koja ce neki broj da pomnozi sa brojem 2. Iskoristiti R.multiply http://ramdajs.com/docs/#multiply
+
+3. R.split splituje string po prosledjenom delimiteru. Prvi parametar je delimiter, drugi parametar je string. 
+    R.split je curried funkcija. Koriscenjem curry osobine funkcije R.split napraviti funkciju word koja vraca reci nekog stringa (splituje string po razmacima ' ');
+
+4. Napraviti funkciju koja pronalazi najveci broj u listi. Iskoristiti funkciju greater, R.reduce. 
+    Broj koji je garantovano manji od svih ostalih je -Infinity
+	
+	var greater = function(a,b) {
+		return a > b ? a : b;
+	};
+	
+	input: [1,-3483,9,7,2]
+	output: 9
+	
+	input: [-21,-3483,-2,-1]
+	output: -1
+
+5. Napraviti sloznu funkciju notEmpty koja proverava da li string nije prazan. Iskorititi funkcije R.not i R.isEmpty
+
+6. Resiti zadatak 8 (zadatak sa SUV vozilima), koriscenjem slozenih funkcija.
+
+7. *************************************************************************************
+
+var articles = [
+  {
+    title: 'Everything Sucks',
+    url: 'http://do.wn/sucks.html',
+    author: {
+      name: 'Debbie Downer',
+      email: 'debbie@do.wn'
+    }
+  },
+  {
+    title: 'If You Please',
+    url: 'http://www.geocities.com/milq',
+    author: {
+      name: 'Caspar Milquetoast',
+      email: 'hello@me.com'
+    }
+  }
+];
+
+8. Napraviti slozenu funkciju names, koja ce vrati niz imena autora iz niza articles koriscenjem samo funkcija get (iz zadatka 1., R.compose, i
+// R.map.
+input: articles    
+output: ['Debbie Downer', 'Caspar Milquetoast'],
+
+
+	

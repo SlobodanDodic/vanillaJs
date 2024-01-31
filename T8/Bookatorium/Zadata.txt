@@ -1,0 +1,103 @@
+Bookatorijum:
+
+	U fajlu ts/knjiga.ts
+	a) Implementirati klasu Knjiga.
+		-	Klasa Knjiga se sastoji od atributa:
+				private _id: number;
+	    			private _name: string;
+    				private _author: string;
+    				private _publisher: string;
+   				private _genre: string;
+	    			private _price: number;
+				private _sold: number;
+		-	Konstruktora kopije (za _sold atribut umesto null vrednosti dodeliti vrednost 0 ukoliko guard operator nije zadovoljen)
+		-	Geteri i seteri za sve atribute
+	U fajlu ts/knjizara.ts 
+	b) Implementirati klasu Knjizara.
+		-	Klasa Knjizara se sastoji od atributa:
+				private _spisakKnjiga: Knjiga[];
+				private _lastId: number;
+		-	Konsturktora:
+			U konstruktoru prvo inicijalizovati _spisakKnjiga.
+			Jedini parametar konstruktora je niz objekata (promenljiva tipa any).
+			Objekti tog niza se prosledjuju konstruktoru klase Knjiga.
+			Vrednost atributa this._lastId treba da dobija vrednosti id-a trenutno dodate knjige.
+		-	Getera i setera za atribute
+		-	Crud operacija:
+			-	getAll(): Knjiga[]
+			-	get(id: number): Knjiga
+			-	add(novaKnjiga: Knjiga): void
+			-	update(knjiga: Knjiga): void
+			-	remove(id: number): void
+		-	Metode: public printBooks(): void
+			Za svaku knjigu treba da se generise sledeci html sadrzaj i upise u tbody:
+
+			<tr>
+				<td>1</td>
+				<td>The Great Gatsby</td>
+				<td>F. Scott Fitzgerald</td>
+				<td>Penguin Random House</td>
+				<td>Classic</td>
+				<td>15.99</td>
+				<td>15</td>
+				<td>
+					<form class="row g-3 sellForm">
+        	                        	<input type="text" value="1" name="id" style="display: none;">
+	                	                <div class="col-auto">
+        	                	        	<button type="submit" class="btn btn-primary mb-3">Prodaj</button>
+                	                	</div>
+					</form>
+        	                </td>
+				<td>
+					<form class="row g-3 deleteForm">
+						<input type="text" value="1" name="id" style="display: none;">
+						<div class="col-auto">
+							<button type="submit" class="btn btn-primary mb-3">Obriši</button>
+						</div>
+					</form>
+				</td>
+			</tr>
+
+	U fajlu ts/app.ts 
+	c) U okviru window.onload:
+		-	Pozvati printBooks metodu knjizare
+		-	Implementirati dodavanje nove knjige kao reakciju na submit dogadaj forme sa id-jem "unosForma".
+	d) Implementirati wireEvents(): void funkciju:
+		-	Implementirati Prodavanje knjige kao reakciju na submit dogadjaj forme sa klasom "sellForm"
+			Kada se klikne na dugme prodaj povecava se vrednost sold atributa odgovarajuce knjige
+			i pozivaju se: printBooks metoda knjizare i wireEvents() funkcija.
+		-	Implementirati brisanje knjige kao reakcija na submit dogadjaj formi sa klasom "deleteForm" (identicno kao u zadatku vinarija)
+		-	Pozvati wireEvents funkciju na dnu window.onload
+	
+	U fajlu ts/knjizara.ts
+	e) Implementirati:
+		-	Metodu: private prosecnaCena(): number
+			Metoda racuna i vraca prosecnu cenu knjiga u knjizari.
+		-	Izmeniti printBooks metodu tako da:
+			- Ukoliko je cena knjige duplo veca od prosecne cene, red koji predstavlja tu knjigu treba da sadrzi klasu "gold":
+				<tr class="gold">
+					<td>9</td>
+					<td>Little House on the Prairie Bookset</td>
+					...
+					
+			- Ukoliko je cena knjige duplo manja od prosecne cene, red koji predstavlja tu knjigu treba da darzi klasu "green":
+				<tr class="green">
+					<td>2</td>
+					<td>To Kill a Mockingbird</td>
+					...
+	f) Implementirati:
+		-	Metodu public najprofitabilnijaKnjiga(): string
+			Metoda pronalazi najprofitabilniju knjigu za knjizaru.
+			Profitabilnost se racuna kao price * sold (cena puta ukupan broj prodati knjiga)
+			Metoda vraca tekst u formatu: 
+			`Najprofitabilnija knjiga je ${imeKnjige} sa ukupnim profitom od $${profit}!`;
+	g) Implementirati:
+		-	Metodu public najprodavanijaKnjigaPoZanru(): string
+			Metoda pronalazi najprodavanije knjige po zanru u knjizari i za svaki zanr ispisuje tu knjigu u formatu:
+			`<b>${Zanr}</b>: Najprodavanija "${Zanr}" knjiga je ${imeKnjige} sa ukupno prodatih ${brojProdatih} knjiga.<br/>`
+	U fajlu ts/app.ts 
+	h) U okviru window.onload:
+		-	Implementirati reakciju na klik dugmeta sa id-jem "profit"
+			Kao reakcija u <p> tag sa id-jem "sadrzaj" upisuje se vrednost metode najprofitabilnijaKnjiga() knjizare.
+		-	Implementirati reakciju na klik dugmeta sa id-jem "bestsellers"
+			Kao reakcija u <p> tag sa id-jem "sadrzaj" upisuje se vrednost metode najprodavanijaKnjigaPoZanru() knjizare.

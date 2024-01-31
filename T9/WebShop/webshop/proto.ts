@@ -1,8 +1,17 @@
 class Korisnik {
 	//TODO implementirati
+  private _ime: string;
+  private _prezime: string;
+  private _lozinka: string;
+
+  public constructor(ime: string, prezime: string, lozinka: string) {
+    this._ime =ime;
+    this._prezime =prezime;
+    this._lozinka =lozinka;
+  }
 
 	ispis(poruka: any): void {
-		//TODO Implementirati (poruka je tipa any u klasi korisnik)
+    console.log(poruka);
 	}
 
 	stampaj(): void {
@@ -11,16 +20,15 @@ class Korisnik {
 }
 
 class MaloprodajniKorisnik extends Korisnik {
-
-	//TODO constructor
+  public constructor(ime:string, prezime:string, lozinka:string){
+    super(ime, prezime, lozinka);
+  };
 
 	ispis(element: HTMLInputElement): void {
-		/* U ovome zadatku nemamo server da nam vraca proizvode koje bi zapatili
-		i njihove objekte procesirali. Oslonicemo se na sadrzaj html-a 
-		(cisto malo da provezbamo snalazenje sa html-om).
+		/* U ovome zadatku nemamo server da nam vraca proizvode koje bi zapatili i njihove objekte procesirali. 
+    Oslonicemo se na sadrzaj html-a (cisto malo da provezbamo snalazenje sa html-om).
 		
-		Na html stranici (webShop.html) imamo 3 proizvoda koji su opisani sa dva <td> - a 
-		i jednim <input> poljem.
+		Na html stranici (webShop.html) imamo 3 proizvoda koji su opisani sa dva <td> - a i jednim <input> poljem.
 		Primetite da se naziv nalazi u <td> polju sa id-jem name{ID},
 		cena se nalazi u u <td> polju sa id-jem price{ID}, a
 		kolicina zeljenih proizvda u <input> polju sa id-jem itemCount{ID}.
@@ -51,15 +59,15 @@ class MaloprodajniKorisnik extends Korisnik {
 		//Za dobijanje cene tog elementa selektujemo innerText price{ID} elementa 
 		//(npr. ako je vrednost promenljive id == 1 zelecmo da selektujemo price1 odnosno "price" + id)
 		//Preuzeti cenu elementa i pomnoziti sa kolicinom:
-		let price: number = //TODO
+		let price: number = 0;//TODO
 		
 		//Za racunanje ukupne cene bi trebalo da prodjemo korz sve elemente i saberemo cenu svakog od njih
 		//(osim ako se ne radi o trenutnom elementu jer smo njegovu vrednost dobili na osnovu parametra element: HTMLInputElement)
 		for(let i in elements){
 			//Ne zelimo da sumiramo price za item za koji je to vec odradjeno
-			if(Number(elements[i]) == id) 
+			if(Number(elements[i]) === id) {
 				continue;
-
+      }
 			//Preuzeti kolicinu obradjivanog elementa itemCount{ID}
 			let k = //TODO 
 			//DODATI na cenu kolicinu * cena obradjivanog elementa price{ID}
@@ -72,12 +80,11 @@ class MaloprodajniKorisnik extends Korisnik {
 }
 
 class VeleprodajniKorisnik extends Korisnik {
-
-	//TODO constructor
-
-	
+  public constructor(ime:string, prezime:string, lozinka:string){
+    super(ime, prezime, lozinka);
+  };
 
 	ispis(element: HTMLInputElement): void {
-		//TODO Ispisi
+    // console.log(element);
 	}
 }
