@@ -4,9 +4,8 @@ ZADATAK:
 	index.html: (Kod pisati u fajlu skripta.js: ./js/skripta.js)
 		--------------
 			Izvršiti validaciju forme upotrebom JavaScript tehnologije.	
-			Sva polja u formi moraju biti unesena kako bi se forma submitovala,
-			pocetno slovo imena i prezimena mora biti veliko.
-			
+			Sva polja u formi moraju biti unesena kako bi se forma submitovala, pocetno slovo imena i prezimena mora biti veliko.
+
 			Na formi se nalazi jedan checkbox, i dva selecta. 
 			
 			Pored "Popust" selecta, postoji jos jedan select sa id-em sel2 i inicijalno je sakriven i onemogucen (disabled). 
@@ -180,10 +179,17 @@ ts.html (Kod pisati u fajlove app.ts AutoSkola.ts Instruktor.ts)
 						
 			+++++++
 			Implementirati funkciju wireEvents (fajl app.ts) koja povezuje klik dogadjaje sa dugmicima:
-				-za dodajIspit: kupe se informacije o ispitu iz odgvarajucih input polja, prave se dva nova objekta tipa Ispit (jedan za Teorija nacin polaganja, jedan za Prakticno nacin polaganja), 
-				                novi objekti kao instruktora koriste aktivnog instruktora, i objekti se dodaju u objekat autoSkola. Nakon dodavanja pozvati metodu refreshIspis autoSkole.
-				-za najslabijiKandidatPoInstruktoruZaNacinPolaganja: preuzima se vrednost selecta nacinPolaganjaSelekt, i poziva se metoda najboljiInstruktoriPoNacinuPolaganja objekta autoSkola prosledjivanjem preuzete vrednosti selekta i aktivnog instruktora
-				-za najboljiInstruktoriPoNacinuPolaganja: poziva se metoda najboljiInstruktoriPoNacinuPolaganja auto skole
+				*za dodajIspit: 
+         -- kupe se informacije o ispitu iz odgovarajucih input polja, 
+         -- prave se dva nova objekta tipa Ispit (jedan za Teorija nacin polaganja, jedan za Prakticno nacin polaganja), 
+         -- novi objekti kao instruktora koriste aktivnog instruktora i objekti se dodaju u objekat autoSkola. 
+         -- Nakon dodavanja pozvati metodu refreshIspis autoSkole.
+
+				*za najslabijiKandidatPoInstruktoruZaNacinPolaganja: 
+         -- preuzima se vrednost selecta nacinPolaganjaSelekt, i poziva se metoda najboljiInstruktoriPoNacinuPolaganja objekta autoSkola prosledjivanjem preuzete vrednosti selekta i aktivnog instruktora
+
+				*za najboljiInstruktoriPoNacinuPolaganja: 
+         -- poziva se metoda najboljiInstruktoriPoNacinuPolaganja auto skole
 
    
 
