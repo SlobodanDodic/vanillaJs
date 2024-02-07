@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../img/logo.png" type="image/png" sizes="16x16">
+
+  <title>Tinker Data</title>
+  <style>
+    body {
+      margin: 0.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    button {
+      padding: 5px 15px;
+      color: white;
+      border-radius: 4px;
+      border: none;
+      margin: 10px;
+      font-size: 1rem;
+    }
+
+    button:hover {
+      cursor: pointer;
+    }
+
+    #podaci {
+      text-align: center;
+    }
+
+    .knjige,
+    .bolnice,
+    .auto {
+      text-align: center;
+      padding: 1rem 0;
+      border-top: 2px solid #515151;
+    }
+
+    .knjige button {
+      background-color: #165b08;
+    }
+
+    .bolnice button {
+      background-color: #632121;
+    }
+
+    .auto button {
+      background-color: #07608a;
+    }
+
+    h2 {
+      color: #515151;
+      width: 100vw;
+      text-align: center;
+      padding: 10px 0px;
+      margin: 0;
+    }
+
+    #result {
+      border-top: 4px double #515151;
+      border-bottom: 4px double #515151;
+    }
+  </style>
+
+  <script type="text/javascript" src="data.js"></script>
+  <script type="text/javascript" src="script.js"></script>
+</head>
+
+<body>
+  <h1>Data Analysis</h1>
+
+  <div class="knjige">
+    <h2>Manipulacija sa podacima iz objekta knjige:</h2>
+    <button id="profit-btn">NajProfitabilnija knjiga po žanru</button>
+    <button id="zarada-btn">Ukupna zarada knjiga po žanru</button>
+    <button id="broj-btn">Ukupan broj prodatih knjiga po žanru</button>
+    <button id="najmanji-broj-btn">Knjige sa najmanjom prodajom po žanru</button>
+  </div>
+
+  <div class="bolnice">
+    <h2>Manipulacija sa podacima iz objekta bolnice:</h2>
+    <button id="oboleli-btn">Procenat obolelih</button>
+    <button id="no-simptom-btn">Procenat obolelih bez simptoma</button>
+    <button id="grad-btn">Grad sa najvise pozitivnih</button>
+    <button id="najvecaTemperatura">Pacijent sa najvecom temp</button>
+  </div>
+
+  <div class="auto">
+    <h2>Manipulacija sa podacima iz objekta autoSkole:</h2>
+    <button id="najslabijiKandidat">Najslabiji kandidat po instruktoru</button>
+    <button id="najboljiKandidat">Najbolji kandidat u svim skolama</button>
+  </div>
+
+  <h2 id="result">⤹ RESULT ⤵</h2>
+  <div id="podaci"></div>
+
+</body>
+
+</html>

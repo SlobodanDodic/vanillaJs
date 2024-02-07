@@ -1,0 +1,4 @@
+** Zadaci sa manipulacijom podataka u različitim tipovima objekata.
+
+** U prvom slučaju, zadaci će biti izvršvani nad nizom objekata koji imaju proste podatke (vino i knjige).
+** U drugom slučaju, zadaci će se izvršavati nad nizom objekata koji u sebi sadrže i atribut sa nizom stringova.
