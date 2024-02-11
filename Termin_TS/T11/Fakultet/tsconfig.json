@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "sourceMap": true,
+    "outFile": "js/app.js",
+    "lib": ["dom", "es2018"]
+  },
+  "files": ["ts/app.ts"]
+}
